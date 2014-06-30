@@ -20,6 +20,8 @@
     int periodInt;
     NSString *periodString;
     NSDate *startTime;
+    NSString *dateString;
+    NSDateFormatter *dateFormatter;
 }
 @property (nonatomic, strong) NSMutableArray *groups;
 @property (nonatomic, weak) NSMutableArray *users;
@@ -28,6 +30,9 @@
 //@property (nonatomic, weak) NSDate *endTime;
 -(void)initGroups;
 -(void)initUsers;
--(void)initDay;
+-(void)initDay1;
+-(void)initDay2;
+-(void)initDay3;
+-(void)initDay4;
 
 @end

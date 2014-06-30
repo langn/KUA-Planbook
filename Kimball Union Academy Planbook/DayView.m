@@ -20,7 +20,18 @@
     return self;
 }
 
-
+-(id)initWithDate:(NSDate*)date {
+    dayViewController = [Global dayViewController];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"M.dd.yy"];
+    date = [NSDate date];
+    dateString = [dateFormatter stringFromDate:date];
+    self = [super init];
+    if (self) {
+        [self addPeriods];
+    }
+    return self;
+}
 
 
 -(void)addPeriods {
@@ -28,7 +39,8 @@
     static float const PIXEL_MINUTE_RATIO = 2.3; //Ratio of minutes of an event to pixels it takes adjusting changes width of events
     int const SCREEN_WIDTH = 320; //Constant for the width of the screen becuase I don't want to type it 132 times
     tester = [Global tester]; //points to the Global tester varibale so that it is the one that we are changing
-    periods = tester.periods; //points? to the Global tester variables periods array so that we are accessing those periods //COMMENTED TO REPLACE TESTER DEFINITON OF PERIODS
+    //periods = tester.periods; //points? to the Global tester variables periods array so that we are accessing those periods //COMMENTED TO REPLACE TESTER DEFINITON OF PERIODS
+    periods = [Global getPeriodsForDay:dateString];
     int currentY = 0; //used to move the new views down in the scrollview so that they arent all on top of each other
     for (Period *period in periods) { //loops thorugh all of the periods in the periods array
         if (period != nil) {
@@ -37,8 +49,7 @@
             NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]; //Use this cal to calculate time differences
             NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit; //Unit flags for hours and minutes
             NSDateComponents *comps = [cal components:unitFlags fromDate:startDate toDate:endDate options:0];
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"h:mm a"];
+
             NSString *startDateString = [dateFormatter stringFromDate:startDate];
             NSString *endDateString = [dateFormatter stringFromDate:endDate];
             int hourTimeDifference = (int)([comps hour] * 60); //take the difference of the hours and puts it in minutes

@@ -18,6 +18,8 @@
     UIScrollView *localDayScrollView;
     NSDate *date;
     NSCalendar *cal;
+    NSDateFormatter *dateFormatter;
+    NSString *dateString;
 }
 
 @property (strong, nonatomic) UIView *dayView;

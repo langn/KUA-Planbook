@@ -19,9 +19,14 @@
     UIViewController *dayViewController;
     Tester *tester;
     NSMutableArray *periods;
+    NSString *dateString;
+    NSDateFormatter *dateFormatter;
+    NSDate* todayDate;
 }
 
 @property (nonatomic, strong) UIScrollView* dayScrollView;
-@property (nonatomic, strong) NSMutableArray *periods;
+//@property (nonatomic, strong) NSMutableArray *periods;
+
+-(id)initWithDate:(NSDate*)date;
 
 @end

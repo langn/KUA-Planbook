@@ -21,5 +21,9 @@
 +(Tester*)tester; //declares public getter function
 +(UIScrollView*)dayScrollView;
 +(UIViewController*)dayViewController;
-+(DayView*)getDayView:(NSDate*)date;
++(DayView*)getDayView:(NSString*)date;
++(NSMutableArray*)getPeriodsForDay:(NSString*)date;
++(void)setPeriodsForDay:(NSString*)date withPeriods:(NSMutableArray*)periods;
++(void)setDayView:(NSString*)date withDayView:(DayView*)newDay;
+
 @end

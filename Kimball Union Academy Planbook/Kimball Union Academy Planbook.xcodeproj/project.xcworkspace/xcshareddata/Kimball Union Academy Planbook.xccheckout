@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F2BE9456-608C-4A66-86A1-04BFBE110581</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Kimball Union Academy Planbook</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E3A3E1BF-2092-46A9-8457-57D4E008B29E</key>
+		<string>https://github.com/langn/KUA-Planbook.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Kimball Union Academy Planbook/Kimball Union Academy Planbook.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E3A3E1BF-2092-46A9-8457-57D4E008B29E</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/langn/KUA-Planbook.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E3A3E1BF-2092-46A9-8457-57D4E008B29E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E3A3E1BF-2092-46A9-8457-57D4E008B29E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KUA-Planbook</string>
+		</dict>
+	</array>
+</dict>
+</plist>

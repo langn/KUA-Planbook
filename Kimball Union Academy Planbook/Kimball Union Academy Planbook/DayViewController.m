@@ -52,16 +52,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (date == nil) {
+        date = [NSDate date];
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"M.dd.yy"];
+        dateString = [dateFormatter stringFromDate:date];
+        //NSLocale* currentLocale = [NSLocale currentLocale];
+        //[date descriptionWithLocale:currentLocale];
+    }
     tester = [Global tester];
-    periods = tester.periods;
+    periods = [Global getPeriodsForDay:dateString];
     cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     totalSizeOfViewInt = [self calculateTotalSizeOfView];
     float totalSizeOfViewFloat = (float)totalSizeOfViewInt;
-    if (date == nil) {
-        NSLocale* currentLocale = [NSLocale currentLocale];
-        [date descriptionWithLocale:currentLocale];
-    }
-    self.dayView = [Global getDayView:date];
+    
+    self.dayView = [Global getDayView:dateString];
     [self.dayView setFrame:CGRectMake(0, 0, 320, totalSizeOfViewFloat)];
     localDayScrollView = [Global dayScrollView];
     [localDayScrollView setDelegate:self];
@@ -71,7 +76,7 @@
     [localDayScrollView setShowsVerticalScrollIndicator:YES];
     [localDayScrollView addSubview:(self.dayView)];
     [self.view addSubview:(localDayScrollView)];
- 
+    
 }
 
 -(void)viewDidLayoutSubviews {
