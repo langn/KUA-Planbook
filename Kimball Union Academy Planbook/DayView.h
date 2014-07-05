@@ -21,6 +21,7 @@
     NSMutableArray *periods;
     NSString *dateString;
     NSDateFormatter *dateFormatter;
+    NSDateFormatter *timeFormatter;
     NSDate* todayDate;
 }
 

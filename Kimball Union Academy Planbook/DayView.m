@@ -20,12 +20,13 @@
     return self;
 }
 
--(id)initWithDate:(NSDate*)date {
+-(id)initWithDate:(NSString*)date {
     dayViewController = [Global dayViewController];
     dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"M.dd.yy"];
-    date = [NSDate date];
-    dateString = [dateFormatter stringFromDate:date];
+    [dateFormatter setDateFormat:@"MM.dd.yy"];
+    //date = [NSDate date];
+    //dateString = [dateFormatter stringFromDate:date];
+    dateString = date;
     self = [super init];
     if (self) {
         [self addPeriods];
@@ -42,6 +43,8 @@
     //periods = tester.periods; //points? to the Global tester variables periods array so that we are accessing those periods //COMMENTED TO REPLACE TESTER DEFINITON OF PERIODS
     periods = [Global getPeriodsForDay:dateString];
     int currentY = 0; //used to move the new views down in the scrollview so that they arent all on top of each other
+    timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"h:mm"];
     for (Period *period in periods) { //loops thorugh all of the periods in the periods array
         if (period != nil) {
             NSDate *startDate = period.startTime; //takes the startTime property (NSDate) of the period objects
@@ -50,8 +53,8 @@
             NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit; //Unit flags for hours and minutes
             NSDateComponents *comps = [cal components:unitFlags fromDate:startDate toDate:endDate options:0];
 
-            NSString *startDateString = [dateFormatter stringFromDate:startDate];
-            NSString *endDateString = [dateFormatter stringFromDate:endDate];
+            NSString *startDateString = [timeFormatter stringFromDate:startDate];
+            NSString *endDateString = [timeFormatter stringFromDate:endDate];
             int hourTimeDifference = (int)([comps hour] * 60); //take the difference of the hours and puts it in minutes
             int minuteTimeDifference = (int)([comps minute]); //difference in minutes
             int totalTimeDifference = hourTimeDifference + minuteTimeDifference; //ads the time differenes together
@@ -61,9 +64,9 @@
             [periodView addSubview:backgroundImageView];
             [periodView sendSubviewToBack:backgroundImageView];
             [backgroundImageView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, totalTimeDifference * PIXEL_MINUTE_RATIO)];
-            UILabel *startLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10, 10, 50, 15))];//label for start time
+            UILabel *startLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10, 10, 75, 15))];//label for start time
             //UILabel *nameLabel = [[UILabel alloc] initWithFrame:(CGRectMake(150, 10, 50, 15))]; //label for period name, not there right now
-            UILabel *endLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10, (totalTimeDifference * PIXEL_MINUTE_RATIO) - 20, 50, 15))];
+            UILabel *endLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10, (totalTimeDifference * PIXEL_MINUTE_RATIO) - 20, 75, 15))];
             UILabel *periodLabel = [[UILabel alloc] initWithFrame:(CGRectMake(290, 10, 20, 15))];
             [startLabel setText:startDateString];
             //[nameLabel setText:period.name] no name property of periods yet

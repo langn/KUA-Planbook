@@ -89,7 +89,7 @@
         endHour++;
     }
     dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"M.dd.yy"];
+    [dateFormatter setDateFormat:@"MM.dd.yy"];
     dateString = [dateFormatter stringFromDate:startTime];
     [Global setPeriodsForDay:dateString withPeriods:self.periods];
 }
@@ -136,7 +136,7 @@
         NSDateComponents *startComps = [[NSDateComponents alloc] init];
         [startComps setYear:2014];
         [startComps setMonth:6];
-        [startComps setDay:26];
+        [startComps setDay:29];
         [startComps setHour:startHour];
         [startComps setMinute:0];
         [startComps setSecond:0];
@@ -145,7 +145,7 @@
         NSDateComponents *endComps = [[NSDateComponents alloc] init];
         [endComps setYear:2014];
         [endComps setMonth:6];
-        [endComps setDay:25];
+        [endComps setDay:29];
         [endComps setHour:endHour];
         [endComps setMinute:0];
         [endComps setSecond:0];
@@ -258,7 +258,7 @@
             }
             case 7: {
                 periodString = @"G";
-                periodInt = 1;
+                periodInt = 0;
                 break;
             }
                 
@@ -268,7 +268,7 @@
         NSDateComponents *startComps = [[NSDateComponents alloc] init];
         [startComps setYear:2014];
         [startComps setMonth:6];
-        [startComps setDay:29];
+        [startComps setDay:30];
         [startComps setHour:startHour];
         [startComps setMinute:15];
         [startComps setSecond:0];
@@ -277,7 +277,7 @@
         NSDateComponents *endComps = [[NSDateComponents alloc] init];
         [endComps setYear:2014];
         [endComps setMonth:6];
-        [endComps setDay:29];
+        [endComps setDay:30];
         [endComps setHour:endHour];
         [endComps setMinute:45];
         [endComps setSecond:0];

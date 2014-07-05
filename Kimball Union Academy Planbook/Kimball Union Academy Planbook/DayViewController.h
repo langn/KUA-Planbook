@@ -20,9 +20,12 @@
     NSCalendar *cal;
     NSDateFormatter *dateFormatter;
     NSString *dateString;
+    CGPoint viewStartLocation; //to keep track of where the view started so that we know when to switch the view
 }
 
 @property (strong, nonatomic) UIView *dayView;
 @property (assign) NSInteger *totalSize;
 +(UIScrollView*)getDayScrollView;
+- (IBAction)didPan:(id)sender;
+
 @end
