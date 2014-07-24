@@ -135,8 +135,8 @@
         }
         NSDateComponents *startComps = [[NSDateComponents alloc] init];
         [startComps setYear:2014];
-        [startComps setMonth:6];
-        [startComps setDay:29];
+        [startComps setMonth:7];
+        [startComps setDay:21];
         [startComps setHour:startHour];
         [startComps setMinute:0];
         [startComps setSecond:0];
@@ -144,8 +144,8 @@
         startTime = [cal dateFromComponents:startComps];
         NSDateComponents *endComps = [[NSDateComponents alloc] init];
         [endComps setYear:2014];
-        [endComps setMonth:6];
-        [endComps setDay:29];
+        [endComps setMonth:7];
+        [endComps setDay:21];
         [endComps setHour:endHour];
         [endComps setMinute:0];
         [endComps setSecond:0];
@@ -201,8 +201,8 @@
         }
         NSDateComponents *startComps = [[NSDateComponents alloc] init];
         [startComps setYear:2014];
-        [startComps setMonth:6];
-        [startComps setDay:27];
+        [startComps setMonth:7];
+        [startComps setDay:23];
         [startComps setHour:startHour];
         [startComps setMinute:30];
         [startComps setSecond:0];
@@ -210,8 +210,8 @@
         startTime = [cal dateFromComponents:startComps];
         NSDateComponents *endComps = [[NSDateComponents alloc] init];
         [endComps setYear:2014];
-        [endComps setMonth:6];
-        [endComps setDay:27];
+        [endComps setMonth:7];
+        [endComps setDay:23];
         [endComps setHour:endHour];
         [endComps setMinute:30];
         [endComps setSecond:0];
@@ -267,8 +267,8 @@
         }
         NSDateComponents *startComps = [[NSDateComponents alloc] init];
         [startComps setYear:2014];
-        [startComps setMonth:6];
-        [startComps setDay:30];
+        [startComps setMonth:7];
+        [startComps setDay:22];
         [startComps setHour:startHour];
         [startComps setMinute:15];
         [startComps setSecond:0];
@@ -276,8 +276,8 @@
         startTime = [cal dateFromComponents:startComps];
         NSDateComponents *endComps = [[NSDateComponents alloc] init];
         [endComps setYear:2014];
-        [endComps setMonth:6];
-        [endComps setDay:30];
+        [endComps setMonth:7];
+        [endComps setDay:22];
         [endComps setHour:endHour];
         [endComps setMinute:45];
         [endComps setSecond:0];
