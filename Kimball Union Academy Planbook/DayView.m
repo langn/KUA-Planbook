@@ -26,7 +26,7 @@
     [dateFormatter setDateFormat:@"MM.dd.yy"];
     //date = [NSDate date];
     //dateString = [dateFormatter stringFromDate:date];
-    dateString = date;
+    self.dateString = date;
     self = [super init];
     if (self) {
         [self addPeriods];
@@ -41,7 +41,7 @@
     int const SCREEN_WIDTH = 320; //Constant for the width of the screen becuase I don't want to type it 132 times
     tester = [Global tester]; //points to the Global tester varibale so that it is the one that we are changing
     //periods = tester.periods; //points? to the Global tester variables periods array so that we are accessing those periods //COMMENTED TO REPLACE TESTER DEFINITON OF PERIODS
-    periods = [Global getPeriodsForDay:dateString];
+    periods = [Global getPeriodsForDay:self.dateString];
     int currentY = 0; //used to move the new views down in the scrollview so that they arent all on top of each other
     timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"h:mm"];

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Global.h"
-#import "Tester.h"
-#import "DayView.h"
+@class Tester;
+@class DayView;
 
 @interface DayViewController : UIViewController <UIScrollViewDelegate> {
     Tester *tester;
@@ -25,7 +25,17 @@
     NSString *dateString;
     CGPoint viewStartLocation;
     UIView *currentDayView;
+    UIView *yesterdayView;
+    UIView *tomorrowView;
+    UIScrollView *scrollView;
+    NSString *yesterdayDateString;
+    NSString *tomorrowDateString;
+    NSString *todayDateString;
     //to keep track of where the view started so that we know when to switch the view
+    int totalSizeOfTodayViewInt;
+    int totalSizeOfYesterdayViewInt;
+    int totalSizeOfTomorrowViewInt;
+    float oldOffset;
 }
 
 @property (strong, nonatomic) UIView *dayView;

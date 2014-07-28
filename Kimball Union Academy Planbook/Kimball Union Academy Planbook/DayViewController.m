@@ -45,8 +45,9 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
-    //[localDayScrollView removeFromSuperview]; //probably not necessary
+    //[scrollView removeFromSuperview]; //probably not necessary
 }
+
 
 
 - (void)viewDidLoad
@@ -60,26 +61,54 @@
         [viewsInMemory insertObject:[NSNull null] atIndex:i];
     }
     
-    localDayScrollView = [Global dayScrollView];
-    [localDayScrollView setDelegate:self];
-    [localDayScrollView setScrollEnabled:YES];
-    [localDayScrollView setPagingEnabled:YES];
-    localDayScrollView = [[UIScrollView alloc] initWithFrame:(CGRectMake(0, 0, 320, self.view.frame.size.height))];
-    localDayScrollView.backgroundColor = [UIColor lightGrayColor];
-    //currentDayView = [[UIView alloc] init];
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    scrollView.delegate = self;
+    [scrollView setScrollEnabled:YES];
+    [scrollView setPagingEnabled:YES];
+    scrollView.backgroundColor = [UIColor lightGrayColor];
     
     [self loadInitialDays];
     
 
-    //currentDayView = [viewsInMemory objectAtIndex:0];
-    //move down later[localDayScrollView setContentSize:CGSizeMake(960, currentDayView.frame.size.height)];
-    [localDayScrollView addSubview:(currentDayView)];
-    [self.view addSubview:(localDayScrollView)];
+    [scrollView addSubview:(currentDayView)];
+    [self.view addSubview:(scrollView)];
     
+    [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0.0f) animated:NO];
 
-    
+    oldOffset = scrollView.contentOffset.x;
     
 }
+
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    oldOffset = scrollView.contentOffset.x;
+    NSLog(@"Old offset %f",oldOffset);
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    float offset = scrollView.contentOffset.x;
+    NSLog(@"Did end declerating");
+    NSLog(@"Content offset is %f",offset);
+    if (offset == 0 && oldOffset != 0) {
+        [tomorrowView removeFromSuperview];
+        [viewsInMemory replaceObjectAtIndex:2 withObject:[viewsInMemory objectAtIndex:1]];
+        tomorrowView = [viewsInMemory objectAtIndex:2];
+        [viewsInMemory replaceObjectAtIndex:1 withObject:[viewsInMemory objectAtIndex:0]];
+        currentDayView = [viewsInMemory objectAtIndex:1];
+        [self findPreviousDay];
+        yesterdayView = [viewsInMemory objectAtIndex:0];
+        currentDayView.frame = CGRectMake(320, 0, 320, totalSizeOfYesterdayViewInt);
+        tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTodayViewInt);
+        yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt); //maybe unneccesary
+        [scrollView addSubview:yesterdayView];
+        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0.0f)];
+        
+    }
+    scrollView.userInteractionEnabled = YES;
+}
+
+
+
 
 -(void)loadInitialDays {
     //first two bits of code get the current day and load that days dayView, next bits take the proceeding/succeeding days and do the same
@@ -90,29 +119,27 @@
         dateString = [dateFormatter stringFromDate:date];
     }
     periods = [Global getPeriodsForDay:dateString];
-    totalSizeOfViewInt = [self calculateTotalSizeOfView];
+    totalSizeOfTodayViewInt = [self calculateTotalSizeOfView];
     self.dayView = [Global getDayView:dateString];
+    todayDateString = dateString;
     [viewsInMemory replaceObjectAtIndex:1 withObject:self.dayView];
     
     currentDayView = [[UIView alloc] init];
     currentDayView = [viewsInMemory objectAtIndex:1];
-    [currentDayView setFrame:CGRectMake(320, 0, 320, totalSizeOfViewInt)];
-    [localDayScrollView addSubview:currentDayView];
+    [currentDayView setFrame:CGRectMake(320, 0, 320, totalSizeOfTodayViewInt)];
+    [scrollView addSubview:currentDayView];
     
     
     [self findPreviousDay];
-    periods = [Global getPeriodsForDay:dateString];
-    totalSizeOfViewInt = [self calculateTotalSizeOfView];
-    currentDayView = [viewsInMemory objectAtIndex:0];
-    [currentDayView setFrame:CGRectMake(0, 0, 320, totalSizeOfViewInt)];
-    [localDayScrollView addSubview:currentDayView];
+    [scrollView addSubview:yesterdayView];
 
     [self findNextDay];
     periods = [Global getPeriodsForDay:dateString];
-    totalSizeOfViewInt = [self calculateTotalSizeOfView];
-    currentDayView = [viewsInMemory objectAtIndex:2];
-    [currentDayView setFrame:CGRectMake(640, 0, 320, totalSizeOfViewInt)];
-    [localDayScrollView addSubview:currentDayView];
+    totalSizeOfTomorrowViewInt = [self calculateTotalSizeOfView];
+    tomorrowView = [[UIView alloc] init];
+    tomorrowView = [viewsInMemory objectAtIndex:2];
+    [tomorrowView setFrame:CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt)];
+    [scrollView addSubview:tomorrowView];
 
 }
 
@@ -123,6 +150,7 @@
     NSString *dateToParse = [dateString substringWithRange:dayRange];
     NSString *monthString = [dateString substringWithRange:monthRange];
     NSString *yearString = [dateString substringWithRange:yearRange];
+    
     int parsedDay = [dateToParse intValue];
     int parsedMonth = [monthString intValue];
     int parsedYear = [yearString intValue];
@@ -153,7 +181,13 @@
     dateString = [NSString stringWithFormat:@"%d.%d.%d",parsedMonth, parsedDay, parsedYear];
     }
     self.dayView = [Global getDayView:dateString];
-    [viewsInMemory replaceObjectAtIndex:0 withObject:self.dayView];
+    yesterdayDateString = dateString;
+    periods = [Global getPeriodsForDay:dateString];
+    totalSizeOfYesterdayViewInt = [self calculateTotalSizeOfView];
+    yesterdayView = [[UIView alloc] init];
+    yesterdayView = self.dayView;
+    [yesterdayView setFrame:CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt)];
+    [viewsInMemory replaceObjectAtIndex:0 withObject:yesterdayView];
 }
 
 -(void)findNextDay {
@@ -202,12 +236,14 @@
     }
     else {
         dateString = [NSString stringWithFormat:@"%d.%d.%d",parsedMonth, parsedDay, parsedYear];
-    }    self.dayView = [Global getDayView:dateString];
+    }
+    self.dayView = [Global getDayView:dateString];
+    tomorrowDateString = dateString;
     [viewsInMemory replaceObjectAtIndex:2 withObject:self.dayView];
 }
 
 -(void)viewDidLayoutSubviews {
-    [localDayScrollView setContentSize:CGSizeMake(960, currentDayView.frame.size.height)];
+    [scrollView setContentSize:CGSizeMake(960, currentDayView.frame.size.height)];
 }
 -(void)viewWillAppear:(BOOL)animated{
 
@@ -236,8 +272,8 @@
 
  - (IBAction)didPan:(UIPanGestureRecognizer *)recognizer {
     if (viewStartLocation.x - self.dayView.center.x > 0) {
-        //[localDayScrollView removeFromSuperview];
-        //[localDayScrollView setHidden:YES];
+        //[scrollView removeFromSuperview];
+        //[scrollView setHidden:YES];
         NSRange dayRange = NSMakeRange(3, 2);
         NSRange monthRange = NSMakeRange(0, 2);
         NSRange yearRange = NSMakeRange(6, 2);
@@ -271,22 +307,14 @@
         periods = [Global getPeriodsForDay:dateString];
         totalSizeOfViewInt = [self calculateTotalSizeOfView];
         [self.dayView setFrame:CGRectMake(0, 0, 320, totalSizeOfViewInt)];
-        localDayScrollViewLeft = [Global dayScrollView];
-        [localDayScrollViewLeft setDelegate:self];
-        [localDayScrollViewLeft setScrollEnabled:YES];
-        localDayScrollViewLeft = [[UIScrollView alloc] initWithFrame:(CGRectMake(300, 0, 320, self.view.frame.size.height))];
-        localDayScrollViewLeft.backgroundColor = [UIColor lightGrayColor];
-        [localDayScrollViewLeft setShowsVerticalScrollIndicator:YES];
-        [localDayScrollViewLeft addSubview:(self.dayView)];
-        [self.view addSubview:(localDayScrollViewLeft)];
-        
+       
         return;
     }  //if the view goes off the screen to the left move back a day
     
     CGPoint translation = [recognizer translationInView:self.view];
     [self.dayView setCenter:CGPointMake(self.dayView.center.x + translation.x, self.dayView.center.y)];
-    [localDayScrollView setScrollEnabled:NO];
+    [scrollView setScrollEnabled:NO];
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
-    [localDayScrollView setScrollEnabled:YES];
+    [scrollView setScrollEnabled:YES];
 }
 @end
