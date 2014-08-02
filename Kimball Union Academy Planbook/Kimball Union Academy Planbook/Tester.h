@@ -34,5 +34,5 @@
 -(void)initDay2;
 -(void)initDay3;
 -(void)initDay4;
-
+-(void)initDay5;
 @end

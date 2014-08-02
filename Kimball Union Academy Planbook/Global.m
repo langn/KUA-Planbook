@@ -23,6 +23,7 @@ static NSMutableDictionary* periodsForDay = nil;
     [_tester initDay2];
     [_tester initDay3];
     [_tester initDay4];
+    [_tester initDay5];
     }
     else  { //if it already exists prints a message to the log
         NSLog:(@"Tester already exists, another one was not created on the global scope");

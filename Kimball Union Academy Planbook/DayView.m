@@ -78,6 +78,7 @@
             [self addSubview:periodView]; //adds the period view to the view
             currentY += totalTimeDifference * PIXEL_MINUTE_RATIO; //ups the current Y pos
             totalSize = currentY;
+            self.totalSizeOfView = totalSize;
         }
     }
 }

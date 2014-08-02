@@ -22,7 +22,7 @@
     NSDate *date;
     NSCalendar *cal;
     NSDateFormatter *dateFormatter;
-    NSString *dateString;
+    //NSString *dateString;
     CGPoint viewStartLocation;
     UIView *currentDayView;
     UIView *yesterdayView;
@@ -42,5 +42,6 @@
 @property (assign) NSInteger *totalSize;
 +(UIScrollView*)getDayScrollView;
 - (IBAction)didPan:(id)sender;
+-(NSString*)getDateStringBackward:(NSString *)dateString;
 
 @end

@@ -26,6 +26,7 @@
 
 @property (nonatomic, strong) UIScrollView* dayScrollView;
 @property (nonatomic, strong) NSString* dateString;
+@property (nonatomic, assign) int totalSizeOfView;
 //@property (nonatomic, strong) NSMutableArray *periods;
 
 -(id)initWithDate:(NSDate*)date;

@@ -61,11 +61,15 @@
         [viewsInMemory insertObject:[NSNull null] atIndex:i];
     }
     
-    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, 320, self.view.frame.size.height)];
     scrollView.delegate = self;
     [scrollView setScrollEnabled:YES];
     [scrollView setPagingEnabled:YES];
     scrollView.backgroundColor = [UIColor lightGrayColor];
+    
+    yesterdayView = [[UIView alloc] init];
+    tomorrowView = [[UIView alloc] init];
+    currentDayView = [[UIView alloc] init];
     
     [self loadInitialDays];
     
@@ -90,21 +94,43 @@
     NSLog(@"Did end declerating");
     NSLog(@"Content offset is %f",offset);
     if (offset == 0 && oldOffset != 0) {
+        todayDateString = yesterdayDateString;
+        totalSizeOfTomorrowViewInt = totalSizeOfTodayViewInt; //moves the size of the views around so that they will correspond to the correct view
+        totalSizeOfTodayViewInt = totalSizeOfYesterdayViewInt;
         [tomorrowView removeFromSuperview];
         [viewsInMemory replaceObjectAtIndex:2 withObject:[viewsInMemory objectAtIndex:1]];
         tomorrowView = [viewsInMemory objectAtIndex:2];
         [viewsInMemory replaceObjectAtIndex:1 withObject:[viewsInMemory objectAtIndex:0]];
         currentDayView = [viewsInMemory objectAtIndex:1];
-        [self findPreviousDay];
+        [self findPreviousDay]; //in this function the totalSizeOfYesterdayViewInt is changes to represent the actual size of yesterday view
         yesterdayView = [viewsInMemory objectAtIndex:0];
-        currentDayView.frame = CGRectMake(320, 0, 320, totalSizeOfYesterdayViewInt);
-        tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTodayViewInt);
-        yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt); //maybe unneccesary
         [scrollView addSubview:yesterdayView];
+        currentDayView.frame = CGRectMake(320, 0, 320, totalSizeOfTodayViewInt);
+        tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt);
+        yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt); //maybe unneccesary
+        
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0.0f)];
         
     }
-    scrollView.userInteractionEnabled = YES;
+    if (offset >= 640 && oldOffset != 640) {
+        todayDateString = tomorrowDateString;
+        
+        [yesterdayView removeFromSuperview];
+        [viewsInMemory replaceObjectAtIndex:0 withObject:[viewsInMemory objectAtIndex:1]];
+        yesterdayView = [viewsInMemory objectAtIndex:0];
+        [viewsInMemory replaceObjectAtIndex:1 withObject:[viewsInMemory objectAtIndex:2]];
+        currentDayView = [viewsInMemory objectAtIndex:1];
+        [self findNextDay];
+        tomorrowView = [viewsInMemory objectAtIndex:2];
+        //periods = [Global getPeriodsForDay:todayDateString];
+        //totalSizeOfTodayViewInt = [self calculateTotalSizeOfView];
+        currentDayView.frame = CGRectMake(320, 0, 320, totalSizeOfTodayViewInt);
+        tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt);
+        yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt);
+        [scrollView addSubview:tomorrowView];
+        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0.0f)];
+    }
+    //scrollView.userInteractionEnabled = YES;
 }
 
 
@@ -116,15 +142,15 @@
         date = [NSDate date];
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM.dd.yy"];
-        dateString = [dateFormatter stringFromDate:date];
+        todayDateString = [dateFormatter stringFromDate:date];
+        yesterdayDateString = [self getDateStringBackward:todayDateString];
+        tomorrowDateString = [self getDateStringForward:todayDateString]; //need to make this method
     }
-    periods = [Global getPeriodsForDay:dateString];
-    totalSizeOfTodayViewInt = [self calculateTotalSizeOfView];
-    self.dayView = [Global getDayView:dateString];
-    todayDateString = dateString;
-    [viewsInMemory replaceObjectAtIndex:1 withObject:self.dayView];
     
-    currentDayView = [[UIView alloc] init];
+    periods = [Global getPeriodsForDay:todayDateString];
+    totalSizeOfTodayViewInt = [self calculateTotalSizeOfView];
+    self.dayView = [Global getDayView:todayDateString];
+    [viewsInMemory replaceObjectAtIndex:1 withObject:self.dayView];
     currentDayView = [viewsInMemory objectAtIndex:1];
     [currentDayView setFrame:CGRectMake(320, 0, 320, totalSizeOfTodayViewInt)];
     [scrollView addSubview:currentDayView];
@@ -134,16 +160,11 @@
     [scrollView addSubview:yesterdayView];
 
     [self findNextDay];
-    periods = [Global getPeriodsForDay:dateString];
-    totalSizeOfTomorrowViewInt = [self calculateTotalSizeOfView];
-    tomorrowView = [[UIView alloc] init];
-    tomorrowView = [viewsInMemory objectAtIndex:2];
-    [tomorrowView setFrame:CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt)];
     [scrollView addSubview:tomorrowView];
 
 }
+-(NSString*)getDateStringBackward:(NSString *)dateString {
 
--(void)findPreviousDay{
     NSRange dayRange = NSMakeRange(3, 2);
     NSRange monthRange = NSMakeRange(0, 2);
     NSRange yearRange = NSMakeRange(6, 2);
@@ -175,25 +196,34 @@
         }
     }
     if (parsedMonth < 10) {
-        dateString = [NSString stringWithFormat:@"0%d.%d.%d",parsedMonth, parsedDay, parsedYear];
+        if (parsedDay < 10) {
+            return [NSString stringWithFormat:@"0%d.0%d.%d",parsedMonth, parsedDay, parsedYear];
+
+        }
+        else {
+            return [NSString stringWithFormat:@"0%d.%d.%d",parsedMonth, parsedDay, parsedYear];
+        }
     }
     else {
-    dateString = [NSString stringWithFormat:@"%d.%d.%d",parsedMonth, parsedDay, parsedYear];
+        if (parsedDay < 10) {
+            return [NSString stringWithFormat:@"%d.0%d.%d",parsedMonth, parsedDay, parsedYear];
+        }
+        return [NSString stringWithFormat:@"%d.%d.%d",parsedMonth, parsedDay, parsedYear];
     }
-    self.dayView = [Global getDayView:dateString];
-    yesterdayDateString = dateString;
-    periods = [Global getPeriodsForDay:dateString];
+}
+
+-(void)findPreviousDay{
+    yesterdayDateString = [self getDateStringBackward:todayDateString];
+    self.dayView = [Global getDayView:yesterdayDateString];
+    periods = [Global getPeriodsForDay:yesterdayDateString];
     totalSizeOfYesterdayViewInt = [self calculateTotalSizeOfView];
-    yesterdayView = [[UIView alloc] init];
     yesterdayView = self.dayView;
     [yesterdayView setFrame:CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt)];
     [viewsInMemory replaceObjectAtIndex:0 withObject:yesterdayView];
 }
 
--(void)findNextDay {
-    NSDate *today = [[NSDate alloc] init];
-    today = [NSDate date];
-    dateString = [dateFormatter stringFromDate:today];
+-(NSString*)getDateStringForward:(NSString *)dateString {
+    
     NSRange dayRange = NSMakeRange(3, 2);
     NSRange monthRange = NSMakeRange(0, 2);
     NSRange yearRange = NSMakeRange(6, 2);
@@ -232,13 +262,30 @@
         parsedYear++;
     }
     if (parsedMonth < 10) {
-        dateString = [NSString stringWithFormat:@"0%d.%d.%d",parsedMonth, parsedDay, parsedYear];
+        if (parsedDay < 10) {
+            return [NSString stringWithFormat:@"0%d.0%d.%d",parsedMonth, parsedDay, parsedYear];
+            
+        }
+        else {
+            return [NSString stringWithFormat:@"0%d.%d.%d",parsedMonth, parsedDay, parsedYear];
+        }
     }
     else {
-        dateString = [NSString stringWithFormat:@"%d.%d.%d",parsedMonth, parsedDay, parsedYear];
+        if (parsedDay < 10) {
+            return [NSString stringWithFormat:@"%d.0%d.%d",parsedMonth, parsedDay, parsedYear];
+        }
+        return [NSString stringWithFormat:@"%d.%d.%d",parsedMonth, parsedDay, parsedYear];
     }
-    self.dayView = [Global getDayView:dateString];
-    tomorrowDateString = dateString;
+
+}
+
+-(void)findNextDay {
+    tomorrowDateString = [self getDateStringForward:todayDateString];
+    self.dayView = [Global getDayView:tomorrowDateString];
+    periods = [Global getPeriodsForDay:tomorrowDateString];
+    totalSizeOfTomorrowViewInt = [self calculateTotalSizeOfView];
+    tomorrowView = self.dayView;
+    [tomorrowView setFrame:CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt)];
     [viewsInMemory replaceObjectAtIndex:2 withObject:self.dayView];
 }
 
@@ -270,51 +317,4 @@
 }
 */
 
- - (IBAction)didPan:(UIPanGestureRecognizer *)recognizer {
-    if (viewStartLocation.x - self.dayView.center.x > 0) {
-        //[scrollView removeFromSuperview];
-        //[scrollView setHidden:YES];
-        NSRange dayRange = NSMakeRange(3, 2);
-        NSRange monthRange = NSMakeRange(0, 2);
-        NSRange yearRange = NSMakeRange(6, 2);
-        NSString *dateToParse = [dateString substringWithRange:dayRange];
-        NSString *monthString = [dateString substringWithRange:monthRange];
-        NSString *yearString = [dateString substringWithRange:yearRange];
-        int parsedDay = [dateToParse intValue];
-        int parsedMonth = [monthString intValue];
-        int parsedYear = [yearString intValue];
-        parsedDay--;
-        if (parsedDay == 0) { //could reorgainze this logic for slight optimization
-            parsedMonth--;
-            if (parsedMonth == 1 || parsedMonth == 3 || parsedMonth == 5 || parsedMonth == 7 || parsedMonth == 8 || parsedMonth == 10 || parsedMonth == 12) {
-                parsedDay = 31;
-            }
-            else if (parsedMonth == 2 && (parsedYear % 4 == 0)){
-                parsedDay = 29;
-            }
-            else if (parsedMonth == 2) {
-                parsedDay = 28;
-            }
-            else {
-                parsedDay = 30;
-            }
-            if (parsedMonth == 0) {
-                parsedYear--;
-            }
-        }
-        dateString = [NSString stringWithFormat:@"%d.%d.%d",parsedMonth, parsedDay, parsedYear];
-        self.dayView = [Global getDayView:dateString];
-        periods = [Global getPeriodsForDay:dateString];
-        totalSizeOfViewInt = [self calculateTotalSizeOfView];
-        [self.dayView setFrame:CGRectMake(0, 0, 320, totalSizeOfViewInt)];
-       
-        return;
-    }  //if the view goes off the screen to the left move back a day
-    
-    CGPoint translation = [recognizer translationInView:self.view];
-    [self.dayView setCenter:CGPointMake(self.dayView.center.x + translation.x, self.dayView.center.y)];
-    [scrollView setScrollEnabled:NO];
-    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
-    [scrollView setScrollEnabled:YES];
-}
 @end
