@@ -61,11 +61,13 @@
         [viewsInMemory insertObject:[NSNull null] atIndex:i];
     }
     
-    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, 320, self.view.frame.size.height)];
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
     scrollView.delegate = self;
     [scrollView setScrollEnabled:YES];
     [scrollView setPagingEnabled:YES];
     scrollView.backgroundColor = [UIColor lightGrayColor];
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
     
     yesterdayView = [[UIView alloc] init];
     tomorrowView = [[UIView alloc] init];
@@ -94,6 +96,7 @@
     NSLog(@"Did end declerating");
     NSLog(@"Content offset is %f",offset);
     if (offset == 0 && oldOffset != 0) {
+        tomorrowDateString = todayDateString;
         todayDateString = yesterdayDateString;
         totalSizeOfTomorrowViewInt = totalSizeOfTodayViewInt; //moves the size of the views around so that they will correspond to the correct view
         totalSizeOfTodayViewInt = totalSizeOfYesterdayViewInt;
@@ -109,10 +112,12 @@
         tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt);
         yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt); //maybe unneccesary
         
-        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0.0f)];
+        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
+        [scrollView setContentSize:CGSizeMake(960, totalSizeOfTodayViewInt)];
         
     }
     if (offset >= 640 && oldOffset != 640) {
+        yesterdayDateString = todayDateString;
         todayDateString = tomorrowDateString;
         
         [yesterdayView removeFromSuperview];
@@ -128,7 +133,10 @@
         tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt);
         yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt);
         [scrollView addSubview:tomorrowView];
-        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0.0f)];
+        
+        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
+        [scrollView setContentSize:CGSizeMake(960, totalSizeOfTodayViewInt)];
+
     }
     //scrollView.userInteractionEnabled = YES;
 }
