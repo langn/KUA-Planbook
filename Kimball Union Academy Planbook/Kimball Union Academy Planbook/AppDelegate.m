@@ -17,9 +17,9 @@
     [Global loadTester];
     [Global loadDayScrollView];
     [Global loadDayViewController];
-    [Parse setApplicationId:@"xivEDSWrAII34eY25ve6gfyMsRdyHDGnjVkbLpLN"
-                  clientKey:@"fLGsb6F7AzkPmc7y229byKkZIGhXXPzAnTs1ZHOs"];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    //[Parse setApplicationId:@"xivEDSWrAII34eY25ve6gfyMsRdyHDGnjVkbLpLN"
+                  //clientKey:@"fLGsb6F7AzkPmc7y229byKkZIGhXXPzAnTs1ZHOs"]; //PARSE CODE: NEED THIS FOR PARSE TO WORK
+    //[PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     return YES;
 }
