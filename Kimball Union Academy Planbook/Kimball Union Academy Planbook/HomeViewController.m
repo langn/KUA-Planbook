@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import <Parse/Parse.h>
 
 @interface HomeViewController ()
 
@@ -33,6 +34,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
     
     // Configure the SKView
     SKView * skView = _skView;

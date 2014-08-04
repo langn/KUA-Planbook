@@ -116,18 +116,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="GEb-Eo-aeY" appends="YES" id="0pc-BZ-Fdm"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Daily View" id="Dar-xQ-z51"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sD-zV-Qou" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="GEb-Eo-aeY">
-                    <connections>
-                        <action selector="didPan:" destination="j3m-kB-9cW" id="sg4-sn-BdL"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="414" y="-1216"/>
         </scene>

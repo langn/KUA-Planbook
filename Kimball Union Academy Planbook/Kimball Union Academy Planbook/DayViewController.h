@@ -41,7 +41,7 @@
 @property (strong, nonatomic) UIView *dayView;
 @property (assign) NSInteger *totalSize;
 +(UIScrollView*)getDayScrollView;
-- (IBAction)didPan:(id)sender;
+
 -(NSString*)getDateStringBackward:(NSString *)dateString;
 
 @end

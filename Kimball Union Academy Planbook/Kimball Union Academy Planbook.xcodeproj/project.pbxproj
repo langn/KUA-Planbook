@@ -46,6 +46,16 @@
 		3FC0EE0C195B6BEC00BDEF33 /* PeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0EE0B195B6BEC00BDEF33 /* PeriodTableViewCell.m */; };
 		3FC0EE0F195B6C0200BDEF33 /* PeriodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0EE0E195B6C0200BDEF33 /* PeriodTableView.m */; };
 		3FEB56E6195C52A300B524C9 /* DayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB56E5195C52A300B524C9 /* DayView.m */; };
+		5CA1DA0E198FF333000BB7BC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA0D198FF333000BB7BC /* Parse.framework */; };
+		5CA1DA10198FF38C000BB7BC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA0F198FF38C000BB7BC /* AudioToolbox.framework */; };
+		5CA1DA12198FF394000BB7BC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA11198FF394000BB7BC /* CFNetwork.framework */; };
+		5CA1DA14198FF39F000BB7BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA13198FF39F000BB7BC /* CoreLocation.framework */; };
+		5CA1DA16198FF3AD000BB7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA15198FF3AD000BB7BC /* libz.dylib */; };
+		5CA1DA18198FF3B4000BB7BC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA17198FF3B4000BB7BC /* MobileCoreServices.framework */; };
+		5CA1DA1A198FF3BD000BB7BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA19198FF3BD000BB7BC /* Security.framework */; };
+		5CA1DA1C198FF3C5000BB7BC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA1B198FF3C5000BB7BC /* StoreKit.framework */; };
+		5CA1DA1E198FF3CD000BB7BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA1D198FF3CD000BB7BC /* SystemConfiguration.framework */; };
+		5CA1DA21199029FC000BB7BC /* Day Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +134,16 @@
 		3FC0EE0E195B6C0200BDEF33 /* PeriodTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeriodTableView.m; path = ../PeriodTableView.m; sourceTree = "<group>"; };
 		3FEB56E4195C52A300B524C9 /* DayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DayView.h; path = ../DayView.h; sourceTree = "<group>"; };
 		3FEB56E5195C52A300B524C9 /* DayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayView.m; path = ../DayView.m; sourceTree = "<group>"; };
+		5CA1DA0D198FF333000BB7BC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		5CA1DA0F198FF38C000BB7BC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5CA1DA11198FF394000BB7BC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5CA1DA13198FF39F000BB7BC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5CA1DA15198FF3AD000BB7BC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5CA1DA17198FF3B4000BB7BC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5CA1DA19198FF3BD000BB7BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5CA1DA1B198FF3C5000BB7BC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5CA1DA1D198FF3CD000BB7BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Day Model.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,10 +151,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CA1DA1E198FF3CD000BB7BC /* SystemConfiguration.framework in Frameworks */,
+				5CA1DA1C198FF3C5000BB7BC /* StoreKit.framework in Frameworks */,
+				5CA1DA1A198FF3BD000BB7BC /* Security.framework in Frameworks */,
+				5CA1DA18198FF3B4000BB7BC /* MobileCoreServices.framework in Frameworks */,
+				5CA1DA16198FF3AD000BB7BC /* libz.dylib in Frameworks */,
+				5CA1DA14198FF39F000BB7BC /* CoreLocation.framework in Frameworks */,
+				5CA1DA12198FF394000BB7BC /* CFNetwork.framework in Frameworks */,
+				5CA1DA10198FF38C000BB7BC /* AudioToolbox.framework in Frameworks */,
 				3F3F84DA195B044500ED1948 /* QuartzCore.framework in Frameworks */,
 				3FB313C61955F565001B397E /* CoreGraphics.framework in Frameworks */,
 				3FB313C81955F565001B397E /* UIKit.framework in Frameworks */,
 				3FB313C41955F565001B397E /* Foundation.framework in Frameworks */,
+				5CA1DA0E198FF333000BB7BC /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +183,7 @@
 		3FB313B71955F565001B397E = {
 			isa = PBXGroup;
 			children = (
+				5CA1DA0D198FF333000BB7BC /* Parse.framework */,
 				3FB313C91955F565001B397E /* Kimball Union Academy Planbook */,
 				3FB313EB1955F565001B397E /* Kimball Union Academy PlanbookTests */,
 				3FB313C21955F565001B397E /* Frameworks */,
@@ -173,6 +203,14 @@
 		3FB313C21955F565001B397E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CA1DA1D198FF3CD000BB7BC /* SystemConfiguration.framework */,
+				5CA1DA1B198FF3C5000BB7BC /* StoreKit.framework */,
+				5CA1DA19198FF3BD000BB7BC /* Security.framework */,
+				5CA1DA17198FF3B4000BB7BC /* MobileCoreServices.framework */,
+				5CA1DA15198FF3AD000BB7BC /* libz.dylib */,
+				5CA1DA13198FF39F000BB7BC /* CoreLocation.framework */,
+				5CA1DA11198FF394000BB7BC /* CFNetwork.framework */,
+				5CA1DA0F198FF38C000BB7BC /* AudioToolbox.framework */,
 				3F3F84D9195B044500ED1948 /* QuartzCore.framework */,
 				3FB313C31955F565001B397E /* Foundation.framework */,
 				3FB313C51955F565001B397E /* CoreGraphics.framework */,
@@ -281,6 +319,7 @@
 				3F1AF6991958812400FED476 /* User.m */,
 				3FB8C60E195A15CB0043995D /* Period.h */,
 				3FB8C60F195A15CB0043995D /* Period.m */,
+				5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */,
 				3F1AF6951958809000FED476 /* Group.h */,
 				3F1AF6961958809000FED476 /* Group.m */,
 			);
@@ -373,6 +412,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Nate Lang";
 				TargetAttributes = {
+					3FB313BF1955F565001B397E = {
+						DevelopmentTeam = Y5WQ5845UC;
+					};
 					3FB313E31955F565001B397E = {
 						TestTargetID = 3FB313BF1955F565001B397E;
 					};
@@ -426,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CA1DA21199029FC000BB7BC /* Day Model.xcdatamodeld in Sources */,
 				3FC0EE0F195B6C0200BDEF33 /* PeriodTableView.m in Sources */,
 				3FB8C61D195A26DF0043995D /* MonthViewController.m in Sources */,
 				3FB314001955F8B7001B397E /* MyScene.m in Sources */,
@@ -576,10 +619,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kimball Union Academy Planbook/Kimball Union Academy Planbook-Prefix.pch";
 				INFOPLIST_FILE = "Kimball Union Academy Planbook/Kimball Union Academy Planbook-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -589,10 +639,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kimball Union Academy Planbook/Kimball Union Academy Planbook-Prefix.pch";
 				INFOPLIST_FILE = "Kimball Union Academy Planbook/Kimball Union Academy Planbook-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -668,6 +725,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */,
+			);
+			currentVersion = 5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */;
+			path = "Day Model.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3FB313B81955F565001B397E /* Project object */;
 }

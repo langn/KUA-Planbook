@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Global.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
@@ -16,7 +17,10 @@
     [Global loadTester];
     [Global loadDayScrollView];
     [Global loadDayViewController];
-
+    [Parse setApplicationId:@"xivEDSWrAII34eY25ve6gfyMsRdyHDGnjVkbLpLN"
+                  clientKey:@"fLGsb6F7AzkPmc7y229byKkZIGhXXPzAnTs1ZHOs"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     return YES;
 }
 							
