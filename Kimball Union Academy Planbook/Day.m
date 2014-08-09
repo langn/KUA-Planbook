@@ -1,20 +1,18 @@
 //
-//  Period.m
+//  Day.m
 //  Kimball Union Academy Planbook
 //
 //  Created by Nathaniel Lang on 8/4/14.
 //  Copyright (c) 2014 Nate Lang. All rights reserved.
 //
 
+#import "Day.h"
 #import "Period.h"
 
 
-@implementation Period
+@implementation Day
 
-@dynamic startTime;
-@dynamic endTime;
-@dynamic title;
-@dynamic classTitle;
-@dynamic inDay;
+@dynamic date;
+@dynamic withPeriods;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DayView.h"
 
+
 @implementation DayView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -39,8 +40,12 @@
     totalSize = 64;
     static float const PIXEL_MINUTE_RATIO = 2.3; //Ratio of minutes of an event to pixels it takes adjusting changes width of events
     int const SCREEN_WIDTH = 320; //Constant for the width of the screen becuase I don't want to type it 132 times
-    tester = [Global tester]; //points to the Global tester varibale so that it is the one that we are changing
+    //tester = [Global tester]; //points to the Global tester varibale so that it is the one that we are changing
     //periods = tester.periods; //points? to the Global tester variables periods array so that we are accessing those periods //COMMENTED TO REPLACE TESTER DEFINITON OF PERIODS
+    
+    //code below is to fetch periods in a day from core data
+
+    
     periods = [Global getPeriodsForDay:self.dateString];
     int currentY = 0; //used to move the new views down in the scrollview so that they arent all on top of each other
     timeFormatter = [[NSDateFormatter alloc] init];

@@ -41,7 +41,7 @@
 		3FB314001955F8B7001B397E /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB313FF1955F8B7001B397E /* MyScene.m */; };
 		3FB314031955FC81001B397E /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB314011955FC81001B397E /* MyParticle.sks */; };
 		3FB314041955FC81001B397E /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB314021955FC81001B397E /* spark.png */; };
-		3FB8C610195A15CB0043995D /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8C60F195A15CB0043995D /* Period.m */; };
+		3FB8C610195A15CB0043995D /* PeriodOld.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8C60F195A15CB0043995D /* PeriodOld.m */; };
 		3FB8C61D195A26DF0043995D /* MonthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8C61C195A26DF0043995D /* MonthViewController.m */; };
 		3FC0EE0C195B6BEC00BDEF33 /* PeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0EE0B195B6BEC00BDEF33 /* PeriodTableViewCell.m */; };
 		3FC0EE0F195B6C0200BDEF33 /* PeriodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0EE0E195B6C0200BDEF33 /* PeriodTableView.m */; };
@@ -56,6 +56,8 @@
 		5CA1DA1C198FF3C5000BB7BC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA1B198FF3C5000BB7BC /* StoreKit.framework */; };
 		5CA1DA1E198FF3CD000BB7BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA1D198FF3CD000BB7BC /* SystemConfiguration.framework */; };
 		5CA1DA21199029FC000BB7BC /* Day Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */; };
+		5CA1DA2619902EDA000BB7BC /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1DA2519902EDA000BB7BC /* Period.m */; };
+		5CA1DA2919902EDB000BB7BC /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1DA2819902EDB000BB7BC /* Day.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,8 +126,8 @@
 		3FB313FF1955F8B7001B397E /* MyScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyScene.m; path = ../MyScene.m; sourceTree = "<group>"; };
 		3FB314011955FC81001B397E /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		3FB314021955FC81001B397E /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		3FB8C60E195A15CB0043995D /* Period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Period.h; path = ../Period.h; sourceTree = "<group>"; };
-		3FB8C60F195A15CB0043995D /* Period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Period.m; path = ../Period.m; sourceTree = "<group>"; };
+		3FB8C60E195A15CB0043995D /* PeriodOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeriodOld.h; path = ../PeriodOld.h; sourceTree = "<group>"; };
+		3FB8C60F195A15CB0043995D /* PeriodOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeriodOld.m; path = ../PeriodOld.m; sourceTree = "<group>"; };
 		3FB8C61B195A26DF0043995D /* MonthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthViewController.h; sourceTree = "<group>"; };
 		3FB8C61C195A26DF0043995D /* MonthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthViewController.m; sourceTree = "<group>"; };
 		3FC0EE0A195B6BEC00BDEF33 /* PeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeriodTableViewCell.h; path = ../PeriodTableViewCell.h; sourceTree = "<group>"; };
@@ -144,6 +146,10 @@
 		5CA1DA1B198FF3C5000BB7BC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5CA1DA1D198FF3CD000BB7BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Day Model.xcdatamodel"; sourceTree = "<group>"; };
+		5CA1DA2419902EDA000BB7BC /* Period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Period.h; sourceTree = "<group>"; };
+		5CA1DA2519902EDA000BB7BC /* Period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Period.m; sourceTree = "<group>"; };
+		5CA1DA2719902EDB000BB7BC /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
+		5CA1DA2819902EDB000BB7BC /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,11 @@
 		3FB313B71955F565001B397E = {
 			isa = PBXGroup;
 			children = (
+				5CA1DA2319902EB0000BB7BC /* Core Dara */,
+				5CA1DA2719902EDB000BB7BC /* Day.h */,
+				5CA1DA2819902EDB000BB7BC /* Day.m */,
+				5CA1DA2419902EDA000BB7BC /* Period.h */,
+				5CA1DA2519902EDA000BB7BC /* Period.m */,
 				5CA1DA0D198FF333000BB7BC /* Parse.framework */,
 				3FB313C91955F565001B397E /* Kimball Union Academy Planbook */,
 				3FB313EB1955F565001B397E /* Kimball Union Academy PlanbookTests */,
@@ -317,9 +328,8 @@
 				3FC0EE01195B51B200BDEF33 /* Particle Emitter */,
 				3F1AF6981958812400FED476 /* User.h */,
 				3F1AF6991958812400FED476 /* User.m */,
-				3FB8C60E195A15CB0043995D /* Period.h */,
-				3FB8C60F195A15CB0043995D /* Period.m */,
-				5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */,
+				3FB8C60E195A15CB0043995D /* PeriodOld.h */,
+				3FB8C60F195A15CB0043995D /* PeriodOld.m */,
 				3F1AF6951958809000FED476 /* Group.h */,
 				3F1AF6961958809000FED476 /* Group.m */,
 			);
@@ -363,6 +373,14 @@
 				3FB314011955FC81001B397E /* MyParticle.sks */,
 			);
 			name = "Particle Emitter";
+			sourceTree = "<group>";
+		};
+		5CA1DA2319902EB0000BB7BC /* Core Dara */ = {
+			isa = PBXGroup;
+			children = (
+				5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */,
+			);
+			name = "Core Dara";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,9 +494,11 @@
 				3FB313DD1955F565001B397E /* HomeViewController.m in Sources */,
 				3F1AF69A1958812400FED476 /* User.m in Sources */,
 				3FEB56E6195C52A300B524C9 /* DayView.m in Sources */,
+				5CA1DA2619902EDA000BB7BC /* Period.m in Sources */,
 				3F3D241D1959F02D005B643C /* Global.m in Sources */,
 				3F1AF68E195875A500FED476 /* SettingsViewController.m in Sources */,
 				3F1AF6941958803400FED476 /* NotificationsViewController.m in Sources */,
+				5CA1DA2919902EDB000BB7BC /* Day.m in Sources */,
 				3F3F84E0195B0C2B00ED1948 /* DayViewController.m in Sources */,
 				3F883BD51958D16F0064D337 /* GroupTableViewCell.m in Sources */,
 				3F3F84DD195B046000ED1948 /* CKCalendarView.m in Sources */,
@@ -490,7 +510,7 @@
 				3F7BE7B9195CBD43004C8006 /* DayScrollView.m in Sources */,
 				3FB313D01955F565001B397E /* main.m in Sources */,
 				3F1AF6A31958BFCD00FED476 /* Tester.m in Sources */,
-				3FB8C610195A15CB0043995D /* Period.m in Sources */,
+				3FB8C610195A15CB0043995D /* PeriodOld.m in Sources */,
 				3FC0EE0C195B6BEC00BDEF33 /* PeriodTableViewCell.m in Sources */,
 				3F1AF6971958809000FED476 /* Group.m in Sources */,
 			);
@@ -733,7 +753,8 @@
 				5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */,
 			);
 			currentVersion = 5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */;
-			path = "Day Model.xcdatamodeld";
+			name = "Day Model.xcdatamodeld";
+			path = "Kimball Union Academy Planbook/Day Model.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

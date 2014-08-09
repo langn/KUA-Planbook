@@ -12,8 +12,39 @@
 
 @implementation AppDelegate
 
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentationDirectory inDomains:NSUserDomainMask] firstObject];
+    NSString *documentName = @"PeriodStorage";
+    NSURL *url = [documentsDirectory URLByAppendingPathComponent:documentName];
+    self.document = [[UIManagedDocument alloc] initWithFileURL:url];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[url path]]) {
+        [self.document openWithCompletionHandler:^(BOOL success) {
+            if (success) {
+                [self documentIsReady];
+            }
+            if (!success ) {
+                NSLog(@"Was not able to open document with url %@", url);
+            }
+        }];
+        
+    }
+    else {
+        [self.document saveToURL:url forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            if (success) {
+                [self documentIsReady];
+            }
+            if (!success) {
+                NSLog(@"Was not able to open document with url %@", url);
+            }
+        }];
+    }
+    
+    
     [Global loadTester];
     [Global loadDayScrollView];
     [Global loadDayViewController];
@@ -49,6 +80,51 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)documentIsReady { //going to need to read in database stuff in here eventually depending on whether or not the data is there
+    if (self.document.documentState == UIDocumentStateNormal) {
+        
+        self.context = self.document.managedObjectContext;
+        DayView *dayView = [[DayView alloc] init];
+        
+        
+        Period *period = [NSEntityDescription insertNewObjectForEntityForName:@"Period" inManagedObjectContext:self.context];
+        
+        //following code is for testing whether this works or not, delete later and replace with JSON init
+        
+        NSString* dateString1 = @"08052014T08:00";
+        NSString* dateString2 = @"08052014T09:00";
+        NSString* dateString3 = @"08052014T10:30";
+        NSString* dateString4 = @"08052014T11:00";
+        NSString* dateString5 = @"08052014T11:15";
+        NSString* dateString6 = @"08052014T12:00";
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MMddyyyy'T'HH':'mm"];
+        
+        NSDate* date1 = [[NSDate alloc] init];
+        NSDate* date2 = [[NSDate alloc] init];
+        NSDate* date3 = [[NSDate alloc] init];
+        NSDate* date4 = [[NSDate alloc] init];
+        NSDate* date5 = [[NSDate alloc] init];
+        NSDate* date6 = [[NSDate alloc] init];
+        
+        date1 = [dateFormatter dateFromString:dateString1];
+        date2 = [dateFormatter dateFromString:dateString2];
+        date3 = [dateFormatter dateFromString:dateString3];
+        date4 = [dateFormatter dateFromString:dateString4];
+        date5 = [dateFormatter dateFromString:dateString5];
+        date6 = [dateFormatter dateFromString:dateString6];
+        
+        period.title = @"A";
+        period.startTime = date1;
+        period.endTime = date2;
+        
+        //save the context
+        
+        
+    }
 }
 
 @end
