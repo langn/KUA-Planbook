@@ -69,9 +69,9 @@
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     
-    yesterdayView = [[UIView alloc] init];
-    tomorrowView = [[UIView alloc] init];
-    currentDayView = [[UIView alloc] init];
+    yesterdayView = [[DayView alloc] initWithDate:yesterdayDateString];
+    tomorrowView = [[DayView alloc] initWithDate:tomorrowDateString];
+    currentDayView = [[DayView alloc] initWithDate:todayDateString];
     
     [self loadInitialDays];
     

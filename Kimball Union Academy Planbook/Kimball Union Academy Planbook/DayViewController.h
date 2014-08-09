@@ -24,9 +24,9 @@
     NSDateFormatter *dateFormatter;
     //NSString *dateString;
     CGPoint viewStartLocation;
-    UIView *currentDayView;
-    UIView *yesterdayView;
-    UIView *tomorrowView;
+    DayView *currentDayView;
+    DayView *yesterdayView;
+    DayView *tomorrowView;
     UIScrollView *scrollView;
     NSString *yesterdayDateString;
     NSString *tomorrowDateString;

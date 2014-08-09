@@ -30,8 +30,8 @@
 @property (nonatomic, strong) NSManagedObjectContext *context;
 //@property (nonatomic, strong) NSMutableArray *periods;
 
--
 
--(id)initWithDate:(NSDate*)date;
+
+-(id)initWithDate:(NSString*)date;
 
 @end
