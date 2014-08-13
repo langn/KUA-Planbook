@@ -69,6 +69,15 @@
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     
+    if (date == nil) {
+        date = [NSDate date];
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM.dd.yy"];
+        todayDateString = [dateFormatter stringFromDate:date];
+        yesterdayDateString = [self getDateStringBackward:todayDateString];
+        tomorrowDateString = [self getDateStringForward:todayDateString]; //need to make this method
+    }
+    
     yesterdayView = [[DayView alloc] initWithDate:yesterdayDateString];
     tomorrowView = [[DayView alloc] initWithDate:tomorrowDateString];
     currentDayView = [[DayView alloc] initWithDate:todayDateString];
@@ -146,14 +155,7 @@
 
 -(void)loadInitialDays {
     //first two bits of code get the current day and load that days dayView, next bits take the proceeding/succeeding days and do the same
-    if (date == nil) {
-        date = [NSDate date];
-        dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM.dd.yy"];
-        todayDateString = [dateFormatter stringFromDate:date];
-        yesterdayDateString = [self getDateStringBackward:todayDateString];
-        tomorrowDateString = [self getDateStringForward:todayDateString]; //need to make this method
-    }
+    
     
     periods = [Global getPeriodsForDay:todayDateString];
     totalSizeOfTodayViewInt = [self calculateTotalSizeOfView];

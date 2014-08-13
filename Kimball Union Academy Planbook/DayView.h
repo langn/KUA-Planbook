@@ -18,10 +18,13 @@
     int totalSize;
     UIViewController *dayViewController;
     Tester *tester;
-    NSMutableArray *periods;
+    NSArray *periods;
     NSDateFormatter *dateFormatter;
     NSDateFormatter *timeFormatter;
     NSDate* todayDate;
+    NSDate *dayStart;
+    NSDate *dayEnd;
+    NSCalendar *cal;
 }
 
 @property (nonatomic, strong) UIScrollView* dayScrollView;

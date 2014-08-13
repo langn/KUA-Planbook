@@ -26,6 +26,8 @@
     user1 = [[User alloc] initWithParameters:@"Nate Lang" withGroups:[[NSMutableArray alloc] initWithObjects:group1, nil] withClassYear:2015];
 }
 
+/*
+
 -(void)initDay1{
     self.periods = [[NSMutableArray alloc] init];
     int startHour = 8;
@@ -157,8 +159,7 @@
         endHour++;
     }
     dateString = [dateFormatter stringFromDate:startTime];
-    [Global setPeriodsForDay:dateString withPeriods:self.periods]; //sets the periods in the NSDictonary to the periods we just created
-}
+    [Global setPeriodsForDay:dateString withPeriods:self.periods]; }
 
 -(void)initDay3{
     self.periods = [[NSMutableArray alloc] init];
@@ -223,8 +224,7 @@
         endHour++;
     }
     dateString = [dateFormatter stringFromDate:startTime];
-    [Global setPeriodsForDay:dateString withPeriods:self.periods]; //sets the periods in the NSDictonary to the periods we just created
-}
+    [Global setPeriodsForDay:dateString withPeriods:self.periods]; }
 
 -(void)initDay4{
     self.periods = [[NSMutableArray alloc] init];
@@ -289,8 +289,7 @@
         endHour++;
     }
     dateString = [dateFormatter stringFromDate:startTime];
-    [Global setPeriodsForDay:dateString withPeriods:self.periods]; //sets the periods in the NSDictonary to the periods we just created
-}
+    [Global setPeriodsForDay:dateString withPeriods:self.periods]; }
 
 -(void)initDay5{
     self.periods = [[NSMutableArray alloc] init];
@@ -355,8 +354,7 @@
         endHour++;
     }
     dateString = [dateFormatter stringFromDate:startTime];
-    [Global setPeriodsForDay:dateString withPeriods:self.periods]; //sets the periods in the NSDictonary to the periods we just created
-}
-
+    [Global setPeriodsForDay:dateString withPeriods:self.periods];
+*/
 
 @end

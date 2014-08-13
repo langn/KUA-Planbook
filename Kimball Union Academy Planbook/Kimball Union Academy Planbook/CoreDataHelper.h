@@ -10,4 +10,7 @@
 
 @interface CoreDataHelper : NSObject
 
+@property (nonatomic, strong) UIManagedDocument *document;
+@property (nonatomic, strong) NSManagedObjectContext *context;
+
 @end
