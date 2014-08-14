@@ -73,6 +73,7 @@
 		5C573F1A199ABD7A00F4AF3A /* MagicalRecord+Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C573EFA199ABD7900F4AF3A /* MagicalRecord+Setup.m */; };
 		5C573F1B199ABD7A00F4AF3A /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C573EFC199ABD7900F4AF3A /* MagicalRecord+ShorthandSupport.m */; };
 		5C573F1C199ABD7A00F4AF3A /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C573EFE199ABD7900F4AF3A /* MagicalRecord.m */; };
+		5C573F5D199D1F1A00F4AF3A /* CoreDataLoader.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5C573F5C199D1F1A00F4AF3A /* CoreDataLoader.sqlite */; };
 		5CA1DA0E198FF333000BB7BC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA0D198FF333000BB7BC /* Parse.framework */; };
 		5CA1DA10198FF38C000BB7BC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA0F198FF38C000BB7BC /* AudioToolbox.framework */; };
 		5CA1DA12198FF394000BB7BC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA11198FF394000BB7BC /* CFNetwork.framework */; };
@@ -221,6 +222,7 @@
 		5C573F00199ABD7900F4AF3A /* MagicalRecordLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordLogging.h; sourceTree = "<group>"; };
 		5C573F01199ABD7900F4AF3A /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		5C573F02199ABD7900F4AF3A /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
+		5C573F5C199D1F1A00F4AF3A /* CoreDataLoader.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoreDataLoader.sqlite; sourceTree = "<group>"; };
 		5CA1DA0D198FF333000BB7BC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5CA1DA0F198FF38C000BB7BC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5CA1DA11198FF394000BB7BC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -274,6 +276,7 @@
 		3FB313B71955F565001B397E = {
 			isa = PBXGroup;
 			children = (
+				5C573F5C199D1F1A00F4AF3A /* CoreDataLoader.sqlite */,
 				5C573EC5199ABD7900F4AF3A /* MagicalRecord */,
 				5CA1DA2319902EB0000BB7BC /* Core Dara */,
 				5CA1DA2719902EDB000BB7BC /* Day.h */,
@@ -658,6 +661,7 @@
 				3FB314041955FC81001B397E /* spark.png in Resources */,
 				3FB313DF1955F565001B397E /* Images.xcassets in Resources */,
 				3F2D8C16195B2184005EB1B8 /* Main_iPhone.storyboard in Resources */,
+				5C573F5D199D1F1A00F4AF3A /* CoreDataLoader.sqlite in Resources */,
 				3FB313CE1955F565001B397E /* InfoPlist.strings in Resources */,
 				3FB314031955FC81001B397E /* MyParticle.sks in Resources */,
 			);

@@ -54,6 +54,8 @@
     
     //initializes a tester object with the given variables for testing purposes
     self.tester = [Global tester];
+    
+    [Period MR_findAll];
 }
 
 
@@ -68,8 +70,7 @@
     NSArray *retVals = [subviews autoDistributeViewsAlongAxis:ALAxisVertical withFixedSize:50.0f alignment:NSLayoutFormatAlignAllCenterX];
 }
 /*
--(void)updateViewConstraints {
-    [super updateViewConstraints];
+             [super updateViewConstraints];
 }
 
 */

@@ -18,11 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Day Model"];
-    [self initializeData];
+        //[self initializeData];
     
     //setup test data using MR CD
+    [self setupCoreDataFromSeedDB];
+    [MagicalRecord setupAutoMigratingCoreDataStack];
     
     
     [Global loadTester];
@@ -118,5 +118,33 @@
     }
 }
 
+-(void)setupCoreDataFromSeedDB {
+    // Get the default store path, then add the name that MR uses for the store
+    NSURL *defaultStorePath = [NSPersistentStore MR_defaultLocalStoreUrl];
+    defaultStorePath = [[defaultStorePath URLByDeletingLastPathComponent] URLByAppendingPathComponent:[MagicalRecord defaultStoreName]];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:[defaultStorePath path]]) {
+        NSURL *seedPath = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"CoreDataLoader" ofType:@"sqlite"]];
+        NSLog(@"Core data store does not yet exist at: %@. Attempting to copy from seed db %@.", [defaultStorePath path], [seedPath path]);
+        
+        // We must create the path first, or the copy will fail
+        [self createPathToStoreFileIfNeccessary:defaultStorePath];
+        
+        NSError* err = nil;
+        if (![fileManager copyItemAtURL:seedPath toURL:defaultStorePath error:&err]) {
+            NSLog(@"Could not copy seed data. error: %@", err);
+        }
+    }
+}
+
+// This method is copied from one of MR's categories
+- (void) createPathToStoreFileIfNeccessary:(NSURL *)urlForStore {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *pathToStore = [urlForStore URLByDeletingLastPathComponent];
+    
+    NSError *error = nil;
+    [fileManager createDirectoryAtPath:[pathToStore path] withIntermediateDirectories:YES attributes:nil error:&error];
+}
 
 @end
