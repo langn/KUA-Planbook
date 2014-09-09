@@ -39,7 +39,7 @@
         int minuteTimeDifference = (int)([comps minute]); //difference in minutes
         int totalTimeDifference = hourTimeDifference + minuteTimeDifference; //ads the time differenes together
         totalSizePre += (int)(totalTimeDifference * PIXEL_MINUTE_RATIO);
-       // int x = (int)totalSizePre;
+        // int x = (int)totalSizePre;
     }
     return totalSizePre;
 }
@@ -70,13 +70,30 @@
     scrollView.showsVerticalScrollIndicator = NO;
     
     if (date == nil) {
-        date = [NSDate date];
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM.dd.yy"];
+        date = [[NSDate alloc] init];
+        date = [NSDate date];
         todayDateString = [dateFormatter stringFromDate:date];
         yesterdayDateString = [self getDateStringBackward:todayDateString];
         tomorrowDateString = [self getDateStringForward:todayDateString]; //need to make this method
     }
+    
+    yesterdayScrollView = [[UIScrollView alloc] init];
+    currentDayScrollView = [[UIScrollView alloc] init];
+    tomorrowScrollView = [[UIScrollView alloc] init];
+    [yesterdayScrollView setDelegate:self];
+    [currentDayScrollView setDelegate:self];
+    [tomorrowScrollView setDelegate:self];
+    [yesterdayScrollView setScrollEnabled:YES];
+    [yesterdayScrollView setPagingEnabled:NO];
+    [yesterdayScrollView setBackgroundColor:[UIColor lightGrayColor]];
+    [currentDayScrollView setScrollEnabled:YES];
+    [currentDayScrollView setPagingEnabled:NO];
+    [currentDayScrollView setBackgroundColor:[UIColor lightGrayColor]];
+    [tomorrowScrollView setScrollEnabled:YES];
+    [tomorrowScrollView setPagingEnabled:NO];
+    [tomorrowScrollView setBackgroundColor:[UIColor lightGrayColor]];
     
     yesterdayView = [[DayView alloc] initWithDate:yesterdayDateString];
     tomorrowView = [[DayView alloc] initWithDate:tomorrowDateString];
@@ -84,12 +101,12 @@
     
     [self loadInitialDays];
     
-
+    
     [scrollView addSubview:(currentDayView)];
     [self.view addSubview:(scrollView)];
     
     [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0.0f) animated:NO];
-
+    
     oldOffset = scrollView.contentOffset.x;
     
 }
@@ -97,8 +114,11 @@
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     oldOffset = scrollView.contentOffset.x;
+    oldOffsetY = scrollView.contentOffset.y;
     NSLog(@"Old offset %f",oldOffset);
+    //[scrollView setPagingEnabled:NO];
 }
+
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     float offset = scrollView.contentOffset.x;
@@ -117,12 +137,16 @@
         [self findPreviousDay]; //in this function the totalSizeOfYesterdayViewInt is changes to represent the actual size of yesterday view
         yesterdayView = [viewsInMemory objectAtIndex:0];
         [scrollView addSubview:yesterdayView];
-        currentDayView.frame = CGRectMake(320, 0, 320, totalSizeOfTodayViewInt);
-        tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt);
-        yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt); //maybe unneccesary
+        [currentDayScrollView addSubview:currentDayView];
+        [tomorrowScrollView addSubview:tomorrowView];
+        [yesterdayScrollView addSubview:yesterdayView];
+        //currentDayView.frame = CGRectMake(320, 0, 320, currentDayView.totalSizeOfView);
+        //tomorrowView.frame = CGRectMake(640, 0, 320, tomorrowView.totalSizeOfView);
+        //yesterdayView.frame = CGRectMake(0, 0, 320, yesterdayView.totalSizeOfView); //maybe unneccesary
         
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
-        [scrollView setContentSize:CGSizeMake(960, totalSizeOfTodayViewInt)];
+        [scrollView setContentSize:CGSizeMake(960, currentDayView.totalSizeOfView)];
+        int contentSize = currentDayView.totalSizeOfView;
         
     }
     if (offset >= 640 && oldOffset != 640) {
@@ -138,14 +162,17 @@
         tomorrowView = [viewsInMemory objectAtIndex:2];
         //periods = [Global getPeriodsForDay:todayDateString];
         //totalSizeOfTodayViewInt = [self calculateTotalSizeOfView];
-        currentDayView.frame = CGRectMake(320, 0, 320, totalSizeOfTodayViewInt);
-        tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt);
-        yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt);
-        [scrollView addSubview:tomorrowView];
+        //currentDayView.frame = CGRectMake(320, 0, 320, currentDayView.totalSizeOfView);
+        [currentDayScrollView addSubview:currentDayView];
+        [tomorrowScrollView addSubview:tomorrowView];
+        [yesterdayScrollView addSubview:yesterdayView];
+        //tomorrowView.frame = CGRectMake(640, 0, 320, tomorrowView.totalSizeOfView);
+        //yesterdayView.frame = CGRectMake(0, 0, 320, yesterdayView.totalSizeOfView);
+        //[scrollView addSubview:tomorrowView];
         
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
-        [scrollView setContentSize:CGSizeMake(960, totalSizeOfTodayViewInt)];
-
+        [scrollView setContentSize:CGSizeMake(960, currentDayView.totalSizeOfView)];
+        
     }
     //scrollView.userInteractionEnabled = YES;
 }
@@ -162,19 +189,25 @@
     self.dayView = [Global getDayView:todayDateString];
     [viewsInMemory replaceObjectAtIndex:1 withObject:self.dayView];
     currentDayView = [viewsInMemory objectAtIndex:1];
-    [currentDayView setFrame:CGRectMake(320, 0, 320, totalSizeOfTodayViewInt)];
-    [scrollView addSubview:currentDayView];
+    
+    [currentDayScrollView setFrame:CGRectMake(320, 0, 320, self.view.frame.size.height)];
+    [currentDayView setFrame:CGRectMake(0, 0, 320, totalSizeOfTodayViewInt)];
+    
+    [currentDayScrollView addSubview:currentDayView];
+    [scrollView addSubview:currentDayScrollView];
     
     
     [self findPreviousDay];
-    [scrollView addSubview:yesterdayView];
-
+    [yesterdayScrollView addSubview:yesterdayView];
+    [scrollView addSubview:yesterdayScrollView];
+    
     [self findNextDay];
-    [scrollView addSubview:tomorrowView];
-
+    [tomorrowScrollView addSubview:tomorrowView];
+    [scrollView addSubview:tomorrowScrollView];
+    
 }
 -(NSString*)getDateStringBackward:(NSString *)dateString {
-
+    
     NSRange dayRange = NSMakeRange(3, 2);
     NSRange monthRange = NSMakeRange(0, 2);
     NSRange yearRange = NSMakeRange(6, 2);
@@ -208,7 +241,7 @@
     if (parsedMonth < 10) {
         if (parsedDay < 10) {
             return [NSString stringWithFormat:@"0%d.0%d.%d",parsedMonth, parsedDay, parsedYear];
-
+            
         }
         else {
             return [NSString stringWithFormat:@"0%d.%d.%d",parsedMonth, parsedDay, parsedYear];
@@ -228,6 +261,7 @@
     periods = [Global getPeriodsForDay:yesterdayDateString];
     totalSizeOfYesterdayViewInt = [self calculateTotalSizeOfView];
     yesterdayView = self.dayView;
+    [yesterdayScrollView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
     [yesterdayView setFrame:CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt)];
     [viewsInMemory replaceObjectAtIndex:0 withObject:yesterdayView];
 }
@@ -286,7 +320,7 @@
         }
         return [NSString stringWithFormat:@"%d.%d.%d",parsedMonth, parsedDay, parsedYear];
     }
-
+    
 }
 
 -(void)findNextDay {
@@ -295,15 +329,16 @@
     periods = [Global getPeriodsForDay:tomorrowDateString];
     totalSizeOfTomorrowViewInt = [self calculateTotalSizeOfView];
     tomorrowView = self.dayView;
-    [tomorrowView setFrame:CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt)];
+    [tomorrowScrollView setFrame:CGRectMake(620, 0, 320, self.view.frame.size.height)];
+    [tomorrowView setFrame:CGRectMake(0, 0, 320, totalSizeOfTomorrowViewInt)];
     [viewsInMemory replaceObjectAtIndex:2 withObject:self.dayView];
 }
 
 -(void)viewDidLayoutSubviews {
-    [scrollView setContentSize:CGSizeMake(960, currentDayView.frame.size.height)];
+    [scrollView setContentSize:CGSizeMake(960, currentDayView.totalSizeOfView)];
 }
 -(void)viewWillAppear:(BOOL)animated{
-
+    
 }
 
 
@@ -317,14 +352,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

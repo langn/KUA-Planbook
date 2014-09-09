@@ -95,7 +95,7 @@
             UILabel *startLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10, 10, 75, 15))];//label for start time
             //UILabel *nameLabel = [[UILabel alloc] initWithFrame:(CGRectMake(150, 10, 50, 15))]; //label for period name, not there right now
             UILabel *endLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10, (totalTimeDifference * PIXEL_MINUTE_RATIO) - 20, 75, 15))];
-            UILabel *periodLabel = [[UILabel alloc] initWithFrame:(CGRectMake(290, 10, 20, 15))];
+            UILabel *periodLabel = [[UILabel alloc] initWithFrame:(CGRectMake(160, 10, 100, 15))];
             [startLabel setText:startDateString];
             //[nameLabel setText:period.name] no name property of periods yet
             [endLabel setText:endDateString];

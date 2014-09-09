@@ -16,9 +16,9 @@
     NSMutableArray *periods;
     NSMutableArray *viewsInMemory;
     int totalSizeOfViewInt;
-    UIScrollView *localDayScrollView;
-    UIScrollView *localDayScrollViewLeft;
-    UIScrollView *localDayScrollViewRight;
+    UIScrollView *yesterdayScrollView;
+    UIScrollView *currentDayScrollView;
+    UIScrollView *tomorrowScrollView;
     NSDate *date;
     NSCalendar *cal;
     NSDateFormatter *dateFormatter;
@@ -36,6 +36,7 @@
     int totalSizeOfYesterdayViewInt;
     int totalSizeOfTomorrowViewInt;
     float oldOffset;
+    float oldOffsetY;
 }
 
 @property (strong, nonatomic) UIView *dayView;
