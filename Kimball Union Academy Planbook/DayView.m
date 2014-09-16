@@ -48,8 +48,8 @@
     dayStart = [cal dateFromComponents:dayStartComponents];
     dayEnd = [cal dateFromComponents:dayEndComponents];
     
-    NSLog(@"The start of the day is %@", dayStart);
-    NSLog(@"The end of the day is %@", dayEnd);
+    //NSLog(@"The start of the day is %@", dayStart);
+    //NSLog(@"The end of the day is %@", dayEnd);
     
     self = [super init];
     if (self) {
@@ -106,9 +106,9 @@
             [self addSubview:periodView]; //adds the period view to the view
             currentY += totalTimeDifference * PIXEL_MINUTE_RATIO; //ups the current Y pos
             totalSize = currentY;
-            self.totalSizeOfView = totalSize;
-        }
+            }
     }
+    _totalSizeOfView = totalSize;
 }
 
 /*

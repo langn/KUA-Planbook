@@ -64,7 +64,8 @@
     scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
     scrollView.delegate = self;
     [scrollView setScrollEnabled:YES];
-    [scrollView setPagingEnabled:YES];
+    [scrollView setPagingEnabled:NO]; //this changes depening on which way the user scrolls
+    [scrollView setDirectionalLockEnabled:YES];
     scrollView.backgroundColor = [UIColor lightGrayColor];
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
@@ -97,18 +98,31 @@
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     oldOffset = scrollView.contentOffset.x;
-    NSLog(@"Old offset %f",oldOffset);
+    oldContentOffset = scrollView.contentOffset;
+    //NSLog(@"Old offset %f",oldOffset);
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.x != oldContentOffset.x) {
+        [scrollView setPagingEnabled:YES];
+    }
+    else {
+        [scrollView setPagingEnabled:NO];
+    }
+}
+
+
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+    [scrollView setPagingEnabled:NO];
     float offset = scrollView.contentOffset.x;
-    NSLog(@"Did end declerating");
-    NSLog(@"Content offset is %f",offset);
+    //NSLog(@"Did end declerating");
+    //NSLog(@"Content offset is %f",offset);
     if (offset == 0 && oldOffset != 0) {
         tomorrowDateString = todayDateString;
         todayDateString = yesterdayDateString;
-        totalSizeOfTomorrowViewInt = totalSizeOfTodayViewInt; //moves the size of the views around so that they will correspond to the correct view
-        totalSizeOfTodayViewInt = totalSizeOfYesterdayViewInt;
+        NSLog(@"Total Size of Yesterday View is: %d", yesterdayView.totalSizeOfView);
+        NSLog(@"Total Size of Today View is: %d", currentDayView.totalSizeOfView);
         [tomorrowView removeFromSuperview];
         [viewsInMemory replaceObjectAtIndex:2 withObject:[viewsInMemory objectAtIndex:1]];
         tomorrowView = [viewsInMemory objectAtIndex:2];
@@ -117,35 +131,39 @@
         [self findPreviousDay]; //in this function the totalSizeOfYesterdayViewInt is changes to represent the actual size of yesterday view
         yesterdayView = [viewsInMemory objectAtIndex:0];
         [scrollView addSubview:yesterdayView];
-        currentDayView.frame = CGRectMake(320, 0, 320, totalSizeOfTodayViewInt);
-        tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt);
-        yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt); //maybe unneccesary
+        currentDayView.frame = CGRectMake(320, 0, 320, yesterdayView.totalSizeOfView);
+        tomorrowView.frame = CGRectMake(640, 0, 320, tomorrowView.totalSizeOfView);
+        yesterdayView.frame = CGRectMake(0, 0, 320, yesterdayView.totalSizeOfView); //maybe unneccesary
         
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
-        [scrollView setContentSize:CGSizeMake(960, totalSizeOfTodayViewInt)];
+        [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 3, currentDayView.totalSizeOfView)];
         
     }
     if (offset >= 640 && oldOffset != 640) {
         yesterdayDateString = todayDateString;
         todayDateString = tomorrowDateString;
-        
+        //NSLog(@"Tomorrow View Total Size of View: %d", tomorrowView.totalSizeOfView);
+        NSLog(@"Current View Total Size of View %d", currentDayView.totalSizeOfView);
+                
         [yesterdayView removeFromSuperview];
         [viewsInMemory replaceObjectAtIndex:0 withObject:[viewsInMemory objectAtIndex:1]];
         yesterdayView = [viewsInMemory objectAtIndex:0];
         [viewsInMemory replaceObjectAtIndex:1 withObject:[viewsInMemory objectAtIndex:2]];
         currentDayView = [viewsInMemory objectAtIndex:1];
         [self findNextDay];
+        
         tomorrowView = [viewsInMemory objectAtIndex:2];
         //periods = [Global getPeriodsForDay:todayDateString];
         //totalSizeOfTodayViewInt = [self calculateTotalSizeOfView];
-        currentDayView.frame = CGRectMake(320, 0, 320, totalSizeOfTodayViewInt);
-        tomorrowView.frame = CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt);
-        yesterdayView.frame = CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt);
+        currentDayView.frame = CGRectMake(320, 0, 320, currentDayView.totalSizeOfView);
+        tomorrowView.frame = CGRectMake(640, 0, 320, tomorrowView.totalSizeOfView);
+        yesterdayView.frame = CGRectMake(0, 0, 320, yesterdayView.totalSizeOfView);
         [scrollView addSubview:tomorrowView];
         
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
-        [scrollView setContentSize:CGSizeMake(960, totalSizeOfTodayViewInt)];
-
+        [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 3, currentDayView.totalSizeOfView)];
+        NSLog(@"Current Day View Total Size Of View Is: %d",currentDayView.totalSizeOfView);
+        
     }
     //scrollView.userInteractionEnabled = YES;
 }
@@ -157,12 +175,10 @@
     //first two bits of code get the current day and load that days dayView, next bits take the proceeding/succeeding days and do the same
     
     
-    periods = [Global getPeriodsForDay:todayDateString];
-    totalSizeOfTodayViewInt = [self calculateTotalSizeOfView];
     self.dayView = [Global getDayView:todayDateString];
     [viewsInMemory replaceObjectAtIndex:1 withObject:self.dayView];
     currentDayView = [viewsInMemory objectAtIndex:1];
-    [currentDayView setFrame:CGRectMake(320, 0, 320, totalSizeOfTodayViewInt)];
+    [currentDayView setFrame:CGRectMake(320, 0, 320, currentDayView.totalSizeOfView)];
     [scrollView addSubview:currentDayView];
     
     
@@ -225,10 +241,8 @@
 -(void)findPreviousDay{
     yesterdayDateString = [self getDateStringBackward:todayDateString];
     self.dayView = [Global getDayView:yesterdayDateString];
-    periods = [Global getPeriodsForDay:yesterdayDateString];
-    totalSizeOfYesterdayViewInt = [self calculateTotalSizeOfView];
     yesterdayView = self.dayView;
-    [yesterdayView setFrame:CGRectMake(0, 0, 320, totalSizeOfYesterdayViewInt)];
+    [yesterdayView setFrame:CGRectMake(0, 0, 320, yesterdayView.totalSizeOfView)];
     [viewsInMemory replaceObjectAtIndex:0 withObject:yesterdayView];
 }
 
@@ -292,10 +306,8 @@
 -(void)findNextDay {
     tomorrowDateString = [self getDateStringForward:todayDateString];
     self.dayView = [Global getDayView:tomorrowDateString];
-    periods = [Global getPeriodsForDay:tomorrowDateString];
-    totalSizeOfTomorrowViewInt = [self calculateTotalSizeOfView];
     tomorrowView = self.dayView;
-    [tomorrowView setFrame:CGRectMake(640, 0, 320, totalSizeOfTomorrowViewInt)];
+    [tomorrowView setFrame:CGRectMake(640, 0, 320, tomorrowView.totalSizeOfView)];
     [viewsInMemory replaceObjectAtIndex:2 withObject:self.dayView];
 }
 

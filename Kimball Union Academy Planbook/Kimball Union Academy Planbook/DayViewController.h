@@ -36,9 +36,10 @@
     int totalSizeOfYesterdayViewInt;
     int totalSizeOfTomorrowViewInt;
     float oldOffset;
+    CGPoint oldContentOffset;
 }
 
-@property (strong, nonatomic) UIView *dayView;
+@property (strong, nonatomic) DayView *dayView;
 @property (assign) NSInteger *totalSize;
 +(UIScrollView*)getDayScrollView;
 
