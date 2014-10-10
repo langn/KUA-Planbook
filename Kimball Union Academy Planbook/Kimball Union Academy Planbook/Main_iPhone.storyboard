@@ -118,6 +118,9 @@
                         <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" title="Daily View" id="Dar-xQ-z51"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="Dar-xQ-z51" id="TwZ-1j-ZFP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sD-zV-Qou" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,7 +138,7 @@
                             <fragment>
                                 <string key="content">There is a CKCalendar view covering the top 60% of the screen not covered by the navBar. Want to add a scrollview reference below to access the day in less detail</string>
                                 <attributes>
-                                    <font key="NSFont" metaFont="toolTip"/>
+                                    <font key="NSFont" metaFont="smallSystem"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                 </attributes>
                             </fragment>

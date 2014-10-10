@@ -39,6 +39,7 @@
     CGPoint oldContentOffset;
 }
 
+@property (strong, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (strong, nonatomic) DayView *dayView;
 @property (assign) NSInteger *totalSize;
 +(UIScrollView*)getDayScrollView;

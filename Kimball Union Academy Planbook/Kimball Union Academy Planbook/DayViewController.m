@@ -66,6 +66,7 @@
     [scrollView setScrollEnabled:YES];
     [scrollView setPagingEnabled:NO]; //this changes depening on which way the user scrolls
     [scrollView setDirectionalLockEnabled:YES];
+    [scrollView setBounces:NO];
     scrollView.backgroundColor = [UIColor lightGrayColor];
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
