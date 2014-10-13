@@ -7,8 +7,7 @@
 //
 
 //TODO
-//Change times labels of squishy labels
-//Add date to the top instead of "daily view"
+//Make stuff look better and format the day on the top of the bar to make more sense
 
 #import "DayView.h"
 
@@ -86,7 +85,7 @@
 
     //if the start time != the end time of the last period add the appropriate gap, first period start from 8
     timeFormatter = [[NSDateFormatter alloc] init];
-    [timeFormatter setDateFormat:@"HH:mm"];
+    [timeFormatter setDateFormat:@"h:mm"];
     NSDate *morningTime = [[NSDate alloc] init];
     
     
@@ -162,14 +161,12 @@
             else {
                 periodView = [[UIView alloc] initWithFrame:(CGRectMake(0, currentY, SCREEN_WIDTH,totalTimeDifference * PIXEL_MINUTE_RATIO))]; //makes a view for the period
                currentY = (currentY + (totalTimeDifference * PIXEL_MINUTE_RATIO));
-                UILabel *startLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10, 10, 75, 15))];//label for start time
+                UILabel *startLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10, 10, 120, 15))];//label for start time
                 //UILabel *nameLabel = [[UILabel alloc] initWithFrame:(CGRectMake(150, 10, 50, 15))]; //label for period name, not there right now
-                UILabel *endLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10, (totalTimeDifference * PIXEL_MINUTE_RATIO) - 20, 75, 15))];
-                [startLabel setText:startDateString];
+                NSString* startLabelText = [NSString stringWithFormat:@"%@ - %@",startDateString,endDateString];
+                [startLabel setText:startLabelText];
                 //[nameLabel setText:period.name] no name property of periods yet
-                [endLabel setText:endDateString];
                 [periodView addSubview:startLabel]; //ads the start time label to the period view
-                [periodView addSubview:endLabel];
             }
             UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"periodBackground"]];
             backgroundImageView.contentMode = UIViewContentModeScaleToFill;

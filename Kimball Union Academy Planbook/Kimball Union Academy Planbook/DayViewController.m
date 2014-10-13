@@ -139,6 +139,8 @@
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
         [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 3, currentDayView.totalSizeOfView)];
         
+        [self.navigationBar setTitle:todayDateString];
+    
     }
     if (offset >= 640 && oldOffset != 640) {
         yesterdayDateString = todayDateString;
@@ -163,7 +165,9 @@
         
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
         [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 3, currentDayView.totalSizeOfView)];
-        NSLog(@"Current Day View Total Size Of View Is: %d",currentDayView.totalSizeOfView);
+        
+        [self.navigationBar setTitle:todayDateString];
+        
         
     }
     //scrollView.userInteractionEnabled = YES;
@@ -182,6 +186,7 @@
     [currentDayView setFrame:CGRectMake(320, 0, 320, currentDayView.totalSizeOfView)];
     [scrollView addSubview:currentDayView];
     
+    [self.navigationBar setTitle:todayDateString];
     
     [self findPreviousDay];
     [scrollView addSubview:yesterdayView];
