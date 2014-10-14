@@ -1,5 +1,5 @@
 //
-//  Period.h
+//  Event.h
 //  Kimball Union Academy Planbook
 //
 //  Created by Nathaniel Lang on 10/14/14.
@@ -9,14 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Day;
+@class Period;
 
-@interface Period : NSManagedObject
+@interface Event : NSManagedObject
 
-@property (nonatomic, retain) NSString * classTitle;
-@property (nonatomic, retain) NSDate * endTime;
 @property (nonatomic, retain) NSDate * startTime;
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) Day *inDay;
+@property (nonatomic, retain) NSDate * endTime;
+@property (nonatomic, retain) Period *onPeriod;
 
 @end

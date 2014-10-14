@@ -22,6 +22,7 @@
     NSDate *date;
     NSCalendar *cal;
     NSDateFormatter *dateFormatter;
+    NSDateFormatter *titleDateFormatter;
     //NSString *dateString;
     CGPoint viewStartLocation;
     DayView *currentDayView;
@@ -31,6 +32,7 @@
     NSString *yesterdayDateString;
     NSString *tomorrowDateString;
     NSString *todayDateString;
+    NSString *titleDateString;
     //to keep track of where the view started so that we know when to switch the view
     int totalSizeOfTodayViewInt;
     int totalSizeOfYesterdayViewInt;

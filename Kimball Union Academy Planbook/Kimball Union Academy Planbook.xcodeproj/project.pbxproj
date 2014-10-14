@@ -84,8 +84,9 @@
 		5CA1DA1C198FF3C5000BB7BC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA1B198FF3C5000BB7BC /* StoreKit.framework */; };
 		5CA1DA1E198FF3CD000BB7BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA1D198FF3CD000BB7BC /* SystemConfiguration.framework */; };
 		5CA1DA21199029FC000BB7BC /* Day Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */; };
-		5CA1DA2619902EDA000BB7BC /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1DA2519902EDA000BB7BC /* Period.m */; };
-		5CA1DA2919902EDB000BB7BC /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1DA2819902EDB000BB7BC /* Day.m */; };
+		5CEC458319EDACFD00F78571 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC458219EDACFD00F78571 /* Event.m */; };
+		5CEC458619EDACFE00F78571 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC458519EDACFE00F78571 /* Day.m */; };
+		5CEC458919EDACFE00F78571 /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC458819EDACFE00F78571 /* Period.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,10 +234,12 @@
 		5CA1DA1B198FF3C5000BB7BC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5CA1DA1D198FF3CD000BB7BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Day Model.xcdatamodel"; sourceTree = "<group>"; };
-		5CA1DA2419902EDA000BB7BC /* Period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Period.h; sourceTree = "<group>"; };
-		5CA1DA2519902EDA000BB7BC /* Period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Period.m; sourceTree = "<group>"; };
-		5CA1DA2719902EDB000BB7BC /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
-		5CA1DA2819902EDB000BB7BC /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
+		5CEC458119EDACFD00F78571 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		5CEC458219EDACFD00F78571 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		5CEC458419EDACFE00F78571 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
+		5CEC458519EDACFE00F78571 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
+		5CEC458719EDACFE00F78571 /* Period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Period.h; sourceTree = "<group>"; };
+		5CEC458819EDACFE00F78571 /* Period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Period.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,10 +282,6 @@
 				5C3FE19F19C0CA0A00107735 /* CoreDataLoader.sqlite */,
 				5C573EC5199ABD7900F4AF3A /* MagicalRecord */,
 				5CA1DA2319902EB0000BB7BC /* Core Dara */,
-				5CA1DA2719902EDB000BB7BC /* Day.h */,
-				5CA1DA2819902EDB000BB7BC /* Day.m */,
-				5CA1DA2419902EDA000BB7BC /* Period.h */,
-				5CA1DA2519902EDA000BB7BC /* Period.m */,
 				5C573EAD19968AB300F4AF3A /* CoreDataHelper.h */,
 				5C573EAE19968AB300F4AF3A /* CoreDataHelper.m */,
 				5CA1DA0D198FF333000BB7BC /* Parse.framework */,
@@ -574,6 +573,12 @@
 			isa = PBXGroup;
 			children = (
 				5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */,
+				5CEC458719EDACFE00F78571 /* Period.h */,
+				5CEC458819EDACFE00F78571 /* Period.m */,
+				5CEC458419EDACFE00F78571 /* Day.h */,
+				5CEC458519EDACFE00F78571 /* Day.m */,
+				5CEC458119EDACFD00F78571 /* Event.h */,
+				5CEC458219EDACFD00F78571 /* Event.m */,
 			);
 			name = "Core Dara";
 			sourceTree = "<group>";
@@ -689,16 +694,17 @@
 				3FB314001955F8B7001B397E /* MyScene.m in Sources */,
 				3F883BD81958D1BE0064D337 /* GroupTableView.m in Sources */,
 				5C573F09199ABD7A00F4AF3A /* NSString+MagicalDataImport.m in Sources */,
+				5CEC458919EDACFE00F78571 /* Period.m in Sources */,
 				3FB313DD1955F565001B397E /* HomeViewController.m in Sources */,
 				5C573F14199ABD7A00F4AF3A /* NSPersistentStore+MagicalRecord.m in Sources */,
 				5C573F0F199ABD7A00F4AF3A /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				5C573EAF19968AB300F4AF3A /* CoreDataHelper.m in Sources */,
 				5C573F12199ABD7A00F4AF3A /* NSManagedObjectContext+MagicalThreading.m in Sources */,
+				5CEC458619EDACFE00F78571 /* Day.m in Sources */,
 				5C573F11199ABD7A00F4AF3A /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				5C573F1C199ABD7A00F4AF3A /* MagicalRecord.m in Sources */,
 				3F1AF69A1958812400FED476 /* User.m in Sources */,
 				3FEB56E6195C52A300B524C9 /* DayView.m in Sources */,
-				5CA1DA2619902EDA000BB7BC /* Period.m in Sources */,
 				3F3D241D1959F02D005B643C /* Global.m in Sources */,
 				5C573F03199ABD7A00F4AF3A /* MagicalImportFunctions.m in Sources */,
 				5C573F04199ABD7A00F4AF3A /* NSAttributeDescription+MagicalDataImport.m in Sources */,
@@ -706,8 +712,8 @@
 				3F1AF6941958803400FED476 /* NotificationsViewController.m in Sources */,
 				5C573F06199ABD7A00F4AF3A /* NSNumber+MagicalDataImport.m in Sources */,
 				5C573F05199ABD7A00F4AF3A /* NSEntityDescription+MagicalDataImport.m in Sources */,
-				5CA1DA2919902EDB000BB7BC /* Day.m in Sources */,
 				3F3F84E0195B0C2B00ED1948 /* DayViewController.m in Sources */,
+				5CEC458319EDACFD00F78571 /* Event.m in Sources */,
 				3F883BD51958D16F0064D337 /* GroupTableViewCell.m in Sources */,
 				5C573F0A199ABD7A00F4AF3A /* NSManagedObject+MagicalAggregation.m in Sources */,
 				5C573F07199ABD7A00F4AF3A /* NSObject+MagicalDataImport.m in Sources */,

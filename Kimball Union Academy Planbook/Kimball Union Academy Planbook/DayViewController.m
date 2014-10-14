@@ -75,6 +75,9 @@
         date = [NSDate date];
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM.dd.yy"];
+        titleDateFormatter = [[NSDateFormatter alloc] init];
+        [titleDateFormatter setDateFormat:@"eeee, LLLL d, yyyy"];
+        titleDateString = [titleDateFormatter stringFromDate:date];
         todayDateString = [dateFormatter stringFromDate:date];
         yesterdayDateString = [self getDateStringBackward:todayDateString];
         tomorrowDateString = [self getDateStringForward:todayDateString]; //need to make this method
@@ -122,6 +125,8 @@
     if (offset == 0 && oldOffset != 0) {
         tomorrowDateString = todayDateString;
         todayDateString = yesterdayDateString;
+        date = [dateFormatter dateFromString:todayDateString];
+        titleDateString = [titleDateFormatter stringFromDate:date];
         NSLog(@"Total Size of Yesterday View is: %d", yesterdayView.totalSizeOfView);
         NSLog(@"Total Size of Today View is: %d", currentDayView.totalSizeOfView);
         [tomorrowView removeFromSuperview];
@@ -139,13 +144,14 @@
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
         [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 3, currentDayView.totalSizeOfView)];
         
-        [self.navigationBar setTitle:todayDateString];
+        [self.navigationBar setTitle:titleDateString];
     
     }
     if (offset >= 640 && oldOffset != 640) {
         yesterdayDateString = todayDateString;
         todayDateString = tomorrowDateString;
-        //NSLog(@"Tomorrow View Total Size of View: %d", tomorrowView.totalSizeOfView);
+        date = [dateFormatter dateFromString:todayDateString];
+        titleDateString = [titleDateFormatter stringFromDate:date];        //NSLog(@"Tomorrow View Total Size of View: %d", tomorrowView.totalSizeOfView);
         NSLog(@"Current View Total Size of View %d", currentDayView.totalSizeOfView);
                 
         [yesterdayView removeFromSuperview];
@@ -166,7 +172,7 @@
         [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
         [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 3, currentDayView.totalSizeOfView)];
         
-        [self.navigationBar setTitle:todayDateString];
+        [self.navigationBar setTitle:titleDateString];
         
         
     }
@@ -186,7 +192,7 @@
     [currentDayView setFrame:CGRectMake(320, 0, 320, currentDayView.totalSizeOfView)];
     [scrollView addSubview:currentDayView];
     
-    [self.navigationBar setTitle:todayDateString];
+    [self.navigationBar setTitle:titleDateString];
     
     [self findPreviousDay];
     [scrollView addSubview:yesterdayView];
