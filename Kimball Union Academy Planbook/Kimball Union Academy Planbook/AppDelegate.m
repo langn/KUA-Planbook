@@ -134,6 +134,8 @@
         NSError* err = nil;
         if (![fileManager copyItemAtURL:seedPath toURL:defaultStorePath error:&err]) {
             NSLog(@"Could not copy seed data. error: %@", err);
+            
+            NSLog(@"app dir: %@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
         }
     }
 }

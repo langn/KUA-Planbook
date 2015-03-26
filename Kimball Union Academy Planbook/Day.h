@@ -2,7 +2,7 @@
 //  Day.h
 //  Kimball Union Academy Planbook
 //
-//  Created by Nathaniel Lang on 10/14/14.
+//  Created by Nathaniel Lang on 11/5/14.
 //  Copyright (c) 2014 Nate Lang. All rights reserved.
 //
 

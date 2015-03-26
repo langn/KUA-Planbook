@@ -46,7 +46,6 @@
 		3FC0EE0C195B6BEC00BDEF33 /* PeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0EE0B195B6BEC00BDEF33 /* PeriodTableViewCell.m */; };
 		3FC0EE0F195B6C0200BDEF33 /* PeriodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0EE0E195B6C0200BDEF33 /* PeriodTableView.m */; };
 		3FEB56E6195C52A300B524C9 /* DayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB56E5195C52A300B524C9 /* DayView.m */; };
-		5C3FE1A019C0CA0A00107735 /* CoreDataLoader.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5C3FE19F19C0CA0A00107735 /* CoreDataLoader.sqlite */; };
 		5C573EAF19968AB300F4AF3A /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C573EAE19968AB300F4AF3A /* CoreDataHelper.m */; };
 		5C573F03199ABD7A00F4AF3A /* MagicalImportFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C573EC9199ABD7900F4AF3A /* MagicalImportFunctions.m */; };
 		5C573F04199ABD7A00F4AF3A /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C573ECB199ABD7900F4AF3A /* NSAttributeDescription+MagicalDataImport.m */; };
@@ -74,6 +73,8 @@
 		5C573F1A199ABD7A00F4AF3A /* MagicalRecord+Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C573EFA199ABD7900F4AF3A /* MagicalRecord+Setup.m */; };
 		5C573F1B199ABD7A00F4AF3A /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C573EFC199ABD7900F4AF3A /* MagicalRecord+ShorthandSupport.m */; };
 		5C573F1C199ABD7A00F4AF3A /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C573EFE199ABD7900F4AF3A /* MagicalRecord.m */; };
+		5C6C6F961A38A78B000B9351 /* CoreDataLoader.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5C6C6F951A38A78B000B9351 /* CoreDataLoader.sqlite */; };
+		5C8D12831A5B3D1D009027BD /* PeriodNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8D12821A5B3D1D009027BD /* PeriodNameViewController.m */; };
 		5CA1DA0E198FF333000BB7BC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA0D198FF333000BB7BC /* Parse.framework */; };
 		5CA1DA10198FF38C000BB7BC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA0F198FF38C000BB7BC /* AudioToolbox.framework */; };
 		5CA1DA12198FF394000BB7BC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA11198FF394000BB7BC /* CFNetwork.framework */; };
@@ -83,10 +84,13 @@
 		5CA1DA1A198FF3BD000BB7BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA19198FF3BD000BB7BC /* Security.framework */; };
 		5CA1DA1C198FF3C5000BB7BC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA1B198FF3C5000BB7BC /* StoreKit.framework */; };
 		5CA1DA1E198FF3CD000BB7BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1DA1D198FF3CD000BB7BC /* SystemConfiguration.framework */; };
-		5CA1DA21199029FC000BB7BC /* Day Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */; };
-		5CEC458319EDACFD00F78571 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC458219EDACFD00F78571 /* Event.m */; };
-		5CEC458619EDACFE00F78571 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC458519EDACFE00F78571 /* Day.m */; };
-		5CEC458919EDACFE00F78571 /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC458819EDACFE00F78571 /* Period.m */; };
+		5CC9529E1ABF8AD600CA8F8B /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9529D1ABF8AD600CA8F8B /* NewEventViewController.m */; };
+		5CC952A11AC0681D00CA8F8B /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC952A01AC0681D00CA8F8B /* TPKeyboardAvoidingScrollView.m */; };
+		5CC952A41AC0691500CA8F8B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC952A31AC0691500CA8F8B /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		5CDA04F21ABF53AC00F52143 /* Day Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA04F11ABF53AC00F52143 /* Day Model.xcdatamodel */; };
+		5CF6A2BA1A0AB00A0040195C /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6A2B91A0AB00A0040195C /* Day.m */; };
+		5CF6A2BD1A0AB00A0040195C /* Period.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6A2BC1A0AB00A0040195C /* Period.m */; };
+		5CF6A2C01A0AB00A0040195C /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6A2BF1A0AB00A0040195C /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,7 +169,6 @@
 		3FC0EE0E195B6C0200BDEF33 /* PeriodTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeriodTableView.m; path = ../PeriodTableView.m; sourceTree = "<group>"; };
 		3FEB56E4195C52A300B524C9 /* DayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DayView.h; path = ../DayView.h; sourceTree = "<group>"; };
 		3FEB56E5195C52A300B524C9 /* DayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayView.m; path = ../DayView.m; sourceTree = "<group>"; };
-		5C3FE19F19C0CA0A00107735 /* CoreDataLoader.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoreDataLoader.sqlite; sourceTree = "<group>"; };
 		5C573EAD19968AB300F4AF3A /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataHelper.h; path = "Kimball Union Academy Planbook/CoreDataHelper.h"; sourceTree = "<group>"; };
 		5C573EAE19968AB300F4AF3A /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataHelper.m; path = "Kimball Union Academy Planbook/CoreDataHelper.m"; sourceTree = "<group>"; };
 		5C573EC8199ABD7900F4AF3A /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
@@ -224,6 +227,9 @@
 		5C573F00199ABD7900F4AF3A /* MagicalRecordLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordLogging.h; sourceTree = "<group>"; };
 		5C573F01199ABD7900F4AF3A /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		5C573F02199ABD7900F4AF3A /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
+		5C6C6F951A38A78B000B9351 /* CoreDataLoader.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoreDataLoader.sqlite; sourceTree = "<group>"; };
+		5C8D12811A5B3D1D009027BD /* PeriodNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodNameViewController.h; sourceTree = "<group>"; };
+		5C8D12821A5B3D1D009027BD /* PeriodNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodNameViewController.m; sourceTree = "<group>"; };
 		5CA1DA0D198FF333000BB7BC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5CA1DA0F198FF38C000BB7BC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5CA1DA11198FF394000BB7BC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -233,13 +239,19 @@
 		5CA1DA19198FF3BD000BB7BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5CA1DA1B198FF3C5000BB7BC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5CA1DA1D198FF3CD000BB7BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Day Model.xcdatamodel"; sourceTree = "<group>"; };
-		5CEC458119EDACFD00F78571 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		5CEC458219EDACFD00F78571 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		5CEC458419EDACFE00F78571 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
-		5CEC458519EDACFE00F78571 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
-		5CEC458719EDACFE00F78571 /* Period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Period.h; sourceTree = "<group>"; };
-		5CEC458819EDACFE00F78571 /* Period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Period.m; sourceTree = "<group>"; };
+		5CC9529C1ABF8AD600CA8F8B /* NewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEventViewController.h; sourceTree = "<group>"; };
+		5CC9529D1ABF8AD600CA8F8B /* NewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventViewController.m; sourceTree = "<group>"; };
+		5CC9529F1AC0681D00CA8F8B /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		5CC952A01AC0681D00CA8F8B /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		5CC952A21AC0691500CA8F8B /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		5CC952A31AC0691500CA8F8B /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		5CDA04F11ABF53AC00F52143 /* Day Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Day Model.xcdatamodel"; sourceTree = "<group>"; };
+		5CF6A2B81A0AB00A0040195C /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
+		5CF6A2B91A0AB00A0040195C /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
+		5CF6A2BB1A0AB00A0040195C /* Period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Period.h; sourceTree = "<group>"; };
+		5CF6A2BC1A0AB00A0040195C /* Period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Period.m; sourceTree = "<group>"; };
+		5CF6A2BE1A0AB00A0040195C /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		5CF6A2BF1A0AB00A0040195C /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,7 +291,7 @@
 		3FB313B71955F565001B397E = {
 			isa = PBXGroup;
 			children = (
-				5C3FE19F19C0CA0A00107735 /* CoreDataLoader.sqlite */,
+				5C6C6F951A38A78B000B9351 /* CoreDataLoader.sqlite */,
 				5C573EC5199ABD7900F4AF3A /* MagicalRecord */,
 				5CA1DA2319902EB0000BB7BC /* Core Dara */,
 				5C573EAD19968AB300F4AF3A /* CoreDataHelper.h */,
@@ -380,6 +392,8 @@
 		3FC0EDFB195B50BB00BDEF33 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5C8D12811A5B3D1D009027BD /* PeriodNameViewController.h */,
+				5C8D12821A5B3D1D009027BD /* PeriodNameViewController.m */,
 				3FC0EDFF195B513E00BDEF33 /* Table View Bits */,
 				3F3F84DE195B0C2B00ED1948 /* DayViewController.h */,
 				3F3F84DF195B0C2B00ED1948 /* DayViewController.m */,
@@ -399,6 +413,8 @@
 				3F3D24161959BC31005B643C /* SignInViewController.m */,
 				3F1AF69B19588E6E00FED476 /* ManageGroupsViewController.h */,
 				3F1AF69C19588E6E00FED476 /* ManageGroupsViewController.m */,
+				5CC9529C1ABF8AD600CA8F8B /* NewEventViewController.h */,
+				5CC9529D1ABF8AD600CA8F8B /* NewEventViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -429,6 +445,10 @@
 		3FC0EDFE195B511300BDEF33 /* Auxilary Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5CC9529F1AC0681D00CA8F8B /* TPKeyboardAvoidingScrollView.h */,
+				5CC952A01AC0681D00CA8F8B /* TPKeyboardAvoidingScrollView.m */,
+				5CC952A21AC0691500CA8F8B /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				5CC952A31AC0691500CA8F8B /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
 				3F3F84DB195B046000ED1948 /* CKCalendarView.h */,
 				3F3F84DC195B046000ED1948 /* CKCalendarView.m */,
 				3F1AF69E19589DC700FED476 /* UIView+AutoLayout.h */,
@@ -572,13 +592,13 @@
 		5CA1DA2319902EB0000BB7BC /* Core Dara */ = {
 			isa = PBXGroup;
 			children = (
-				5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */,
-				5CEC458719EDACFE00F78571 /* Period.h */,
-				5CEC458819EDACFE00F78571 /* Period.m */,
-				5CEC458419EDACFE00F78571 /* Day.h */,
-				5CEC458519EDACFE00F78571 /* Day.m */,
-				5CEC458119EDACFD00F78571 /* Event.h */,
-				5CEC458219EDACFD00F78571 /* Event.m */,
+				5CDA04F11ABF53AC00F52143 /* Day Model.xcdatamodel */,
+				5CF6A2BE1A0AB00A0040195C /* Event.h */,
+				5CF6A2BF1A0AB00A0040195C /* Event.m */,
+				5CF6A2BB1A0AB00A0040195C /* Period.h */,
+				5CF6A2BC1A0AB00A0040195C /* Period.m */,
+				5CF6A2B81A0AB00A0040195C /* Day.h */,
+				5CF6A2B91A0AB00A0040195C /* Day.m */,
 			);
 			name = "Core Dara";
 			sourceTree = "<group>";
@@ -666,7 +686,7 @@
 				3FB314041955FC81001B397E /* spark.png in Resources */,
 				3FB313DF1955F565001B397E /* Images.xcassets in Resources */,
 				3F2D8C16195B2184005EB1B8 /* Main_iPhone.storyboard in Resources */,
-				5C3FE1A019C0CA0A00107735 /* CoreDataLoader.sqlite in Resources */,
+				5C6C6F961A38A78B000B9351 /* CoreDataLoader.sqlite in Resources */,
 				3FB313CE1955F565001B397E /* InfoPlist.strings in Resources */,
 				3FB314031955FC81001B397E /* MyParticle.sks in Resources */,
 			);
@@ -687,33 +707,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CA1DA21199029FC000BB7BC /* Day Model.xcdatamodeld in Sources */,
 				3FC0EE0F195B6C0200BDEF33 /* PeriodTableView.m in Sources */,
 				5C573F19199ABD7A00F4AF3A /* MagicalRecord+Options.m in Sources */,
 				3FB8C61D195A26DF0043995D /* MonthViewController.m in Sources */,
 				3FB314001955F8B7001B397E /* MyScene.m in Sources */,
 				3F883BD81958D1BE0064D337 /* GroupTableView.m in Sources */,
 				5C573F09199ABD7A00F4AF3A /* NSString+MagicalDataImport.m in Sources */,
-				5CEC458919EDACFE00F78571 /* Period.m in Sources */,
 				3FB313DD1955F565001B397E /* HomeViewController.m in Sources */,
+				5CF6A2BA1A0AB00A0040195C /* Day.m in Sources */,
 				5C573F14199ABD7A00F4AF3A /* NSPersistentStore+MagicalRecord.m in Sources */,
+				5CC952A41AC0691500CA8F8B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				5CC952A11AC0681D00CA8F8B /* TPKeyboardAvoidingScrollView.m in Sources */,
 				5C573F0F199ABD7A00F4AF3A /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				5C573EAF19968AB300F4AF3A /* CoreDataHelper.m in Sources */,
 				5C573F12199ABD7A00F4AF3A /* NSManagedObjectContext+MagicalThreading.m in Sources */,
-				5CEC458619EDACFE00F78571 /* Day.m in Sources */,
 				5C573F11199ABD7A00F4AF3A /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				5C573F1C199ABD7A00F4AF3A /* MagicalRecord.m in Sources */,
 				3F1AF69A1958812400FED476 /* User.m in Sources */,
 				3FEB56E6195C52A300B524C9 /* DayView.m in Sources */,
+				5CDA04F21ABF53AC00F52143 /* Day Model.xcdatamodel in Sources */,
 				3F3D241D1959F02D005B643C /* Global.m in Sources */,
 				5C573F03199ABD7A00F4AF3A /* MagicalImportFunctions.m in Sources */,
 				5C573F04199ABD7A00F4AF3A /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				3F1AF68E195875A500FED476 /* SettingsViewController.m in Sources */,
 				3F1AF6941958803400FED476 /* NotificationsViewController.m in Sources */,
+				5CF6A2C01A0AB00A0040195C /* Event.m in Sources */,
 				5C573F06199ABD7A00F4AF3A /* NSNumber+MagicalDataImport.m in Sources */,
 				5C573F05199ABD7A00F4AF3A /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				3F3F84E0195B0C2B00ED1948 /* DayViewController.m in Sources */,
-				5CEC458319EDACFD00F78571 /* Event.m in Sources */,
 				3F883BD51958D16F0064D337 /* GroupTableViewCell.m in Sources */,
 				5C573F0A199ABD7A00F4AF3A /* NSManagedObject+MagicalAggregation.m in Sources */,
 				5C573F07199ABD7A00F4AF3A /* NSObject+MagicalDataImport.m in Sources */,
@@ -729,9 +750,11 @@
 				5C573F1B199ABD7A00F4AF3A /* MagicalRecord+ShorthandSupport.m in Sources */,
 				3F1AF691195879D900FED476 /* ContactUsViewController.m in Sources */,
 				3FB313D41955F565001B397E /* AppDelegate.m in Sources */,
+				5C8D12831A5B3D1D009027BD /* PeriodNameViewController.m in Sources */,
 				5C573F17199ABD7A00F4AF3A /* MagicalRecord+ErrorHandling.m in Sources */,
 				3F3D24171959BC31005B643C /* SignInViewController.m in Sources */,
 				3F1AF6A019589DC700FED476 /* UIView+AutoLayout.m in Sources */,
+				5CC9529E1ABF8AD600CA8F8B /* NewEventViewController.m in Sources */,
 				5C573F10199ABD7A00F4AF3A /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				3F7BE7B9195CBD43004C8006 /* DayScrollView.m in Sources */,
 				3FB313D01955F565001B397E /* main.m in Sources */,
@@ -741,6 +764,7 @@
 				3FB8C610195A15CB0043995D /* PeriodOld.m in Sources */,
 				3FC0EE0C195B6BEC00BDEF33 /* PeriodTableViewCell.m in Sources */,
 				5C573F0C199ABD7A00F4AF3A /* NSManagedObject+MagicalFinders.m in Sources */,
+				5CF6A2BD1A0AB00A0040195C /* Period.m in Sources */,
 				3F1AF6971958809000FED476 /* Group.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -974,20 +998,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5CA1DA1F199029FC000BB7BC /* Day Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */,
-			);
-			currentVersion = 5CA1DA20199029FC000BB7BC /* Day Model.xcdatamodel */;
-			name = "Day Model.xcdatamodeld";
-			path = "Kimball Union Academy Planbook/Day Model.xcdatamodeld";
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 3FB313B81955F565001B397E /* Project object */;
 }

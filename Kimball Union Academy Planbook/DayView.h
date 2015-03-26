@@ -2,7 +2,7 @@
 //  DayView.h
 //  Kimball Union Academy Planbook
 //
-//  Created by iD Student on 6/26/14.
+//  Created by Nate Lang on 6/26/14.
 //  Copyright (c) 2014 Nate Lang. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 #import "Period.h"
 #import "Global.h"
 #import "Tester.h"
+#import "Event.h"
 
 @class Tester;
 
@@ -19,6 +20,7 @@
     UIViewController *dayViewController;
     Tester *tester;
     NSArray *periods;
+    NSArray *events;
     NSDateFormatter *dateFormatter;
     NSDateFormatter *timeFormatter;
     NSDate* todayDate;

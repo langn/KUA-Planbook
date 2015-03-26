@@ -17,7 +17,7 @@
 
 -(void) viewWillAppear:(BOOL)animated  {
     [super viewDidLoad];
-    
+    /*
     // Configure the SKView
     SKView * skView = _skView;
     skView.showsFPS = YES;
@@ -29,12 +29,14 @@
     
     // Present the scene.
     [skView presentScene:scene];
+     */
 }
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
+    /*
     // Configure the SKView
     SKView * skView = _skView;
     skView.showsFPS = NO;
@@ -54,6 +56,7 @@
     
     //initializes a tester object with the given variables for testing purposes
     self.tester = [Global tester];
+    */
     
     [Period MR_findAll];
 }

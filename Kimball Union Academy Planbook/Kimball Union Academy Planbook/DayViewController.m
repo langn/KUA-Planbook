@@ -2,7 +2,7 @@
 //  DayViewController.m
 //  Kimball Union Academy Planbook
 //
-//  Created by iD Student on 6/25/14.
+//  Created by Nate Lang on 6/25/14.
 //  Copyright (c) 2014 Nate Lang. All rights reserved.
 //
 
@@ -17,7 +17,7 @@
 
 @implementation DayViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil //this init is not used at the moment
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -37,16 +37,13 @@
         NSDateComponents *comps = [cal components:unitFlags fromDate:startDate toDate:endDate options:0];
         int hourTimeDifference = (int)([comps hour] * 60); //take the difference of the hours and puts it in minutes
         int minuteTimeDifference = (int)([comps minute]); //difference in minutes
-        int totalTimeDifference = hourTimeDifference + minuteTimeDifference; //ads the time differenes together
+        int totalTimeDifference = hourTimeDifference + minuteTimeDifference; //adds the time differenes together
         totalSizePre += (int)(totalTimeDifference * PIXEL_MINUTE_RATIO);
        // int x = (int)totalSizePre;
     }
     return totalSizePre;
 }
 
--(void)viewDidDisappear:(BOOL)animated {
-    //[scrollView removeFromSuperview]; //probably not necessary
-}
 
 
 
@@ -54,13 +51,14 @@
 {
     [super viewDidLoad];
     tester = [Global tester];
-    cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    viewsInMemory = [[NSMutableArray alloc] init];
+    cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]; //create the calendar
+    viewsInMemory = [[NSMutableArray alloc] init]; //init the viewsInMemory array
     
     for (int i = 0; i < 3; i++) {
-        [viewsInMemory insertObject:[NSNull null] atIndex:i];
+        [viewsInMemory insertObject:[NSNull null] atIndex:i]; //fill the viewInMomery array with null objects
     }
     
+    //scrollView properties
     scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
     scrollView.delegate = self;
     [scrollView setScrollEnabled:YES];
@@ -71,21 +69,24 @@
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     
+    //set the date based off of current user settings and adjust ceratin variables based on current date
     if (date == nil) {
-        date = [NSDate date];
+        date = [NSDate date]; //get date
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM.dd.yy"];
         titleDateFormatter = [[NSDateFormatter alloc] init];
         [titleDateFormatter setDateFormat:@"eeee, LLLL d, yyyy"];
-        titleDateString = [titleDateFormatter stringFromDate:date];
+        titleDateString = [titleDateFormatter stringFromDate:date]; //format the date string for the top of the view
         todayDateString = [dateFormatter stringFromDate:date];
-        yesterdayDateString = [self getDateStringBackward:todayDateString];
-        tomorrowDateString = [self getDateStringForward:todayDateString]; //need to make this method
+        yesterdayDateString = [self getDateStringBackward:todayDateString]; //get the string for the date before
+        tomorrowDateString = [self getDateStringForward:todayDateString]; //get the string for the date after
     }
     
+    //initialize the 3 views that will be in the memory
     yesterdayView = [[DayView alloc] initWithDate:yesterdayDateString];
     tomorrowView = [[DayView alloc] initWithDate:tomorrowDateString];
     currentDayView = [[DayView alloc] initWithDate:todayDateString];
+    
     
     [self loadInitialDays];
     
@@ -141,7 +142,7 @@
         tomorrowView.frame = CGRectMake(640, 0, 320, tomorrowView.totalSizeOfView);
         yesterdayView.frame = CGRectMake(0, 0, 320, yesterdayView.totalSizeOfView); //maybe unneccesary
         
-        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
+        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, oldContentOffset.y) animated:NO];
         [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 3, currentDayView.totalSizeOfView)];
         
         [self.navigationBar setTitle:titleDateString];
@@ -169,7 +170,7 @@
         yesterdayView.frame = CGRectMake(0, 0, 320, yesterdayView.totalSizeOfView);
         [scrollView addSubview:tomorrowView];
         
-        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, -64.0f) animated:NO];
+        [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, oldContentOffset.y) animated:NO];
         [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 3, currentDayView.totalSizeOfView)];
         
         [self.navigationBar setTitle:titleDateString];
@@ -201,6 +202,8 @@
     [scrollView addSubview:tomorrowView];
 
 }
+
+//find the date before a given date string
 -(NSString*)getDateStringBackward:(NSString *)dateString {
 
     NSRange dayRange = NSMakeRange(3, 2);
@@ -258,6 +261,7 @@
     [viewsInMemory replaceObjectAtIndex:0 withObject:yesterdayView];
 }
 
+//find the date after a given dateString
 -(NSString*)getDateStringForward:(NSString *)dateString {
     
     NSRange dayRange = NSMakeRange(3, 2);
@@ -315,6 +319,7 @@
 
 }
 
+//find the nxt day
 -(void)findNextDay {
     tomorrowDateString = [self getDateStringForward:todayDateString];
     self.dayView = [Global getDayView:tomorrowDateString];

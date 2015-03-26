@@ -10,29 +10,29 @@
 	<string>Kimball Union Academy Planbook</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E3A3E1BF-2092-46A9-8457-57D4E008B29E</key>
+		<key>2932098333393999DE20CE58545EAA00B8D3E12C</key>
 		<string>https://github.com/langn/KUA-Planbook.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Kimball Union Academy Planbook/Kimball Union Academy Planbook.xcodeproj/project.xcworkspace</string>
+	<string>Kimball Union Academy Planbook/Kimball Union Academy Planbook.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E3A3E1BF-2092-46A9-8457-57D4E008B29E</key>
+		<key>2932098333393999DE20CE58545EAA00B8D3E12C</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/langn/KUA-Planbook.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E3A3E1BF-2092-46A9-8457-57D4E008B29E</string>
+	<string>2932098333393999DE20CE58545EAA00B8D3E12C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E3A3E1BF-2092-46A9-8457-57D4E008B29E</string>
+			<string>2932098333393999DE20CE58545EAA00B8D3E12C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>KUA-Planbook</string>
 		</dict>
