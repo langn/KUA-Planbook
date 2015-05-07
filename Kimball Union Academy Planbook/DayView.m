@@ -164,11 +164,18 @@
                 //[nameLabel setText:period.name] no name property of periods yet
                 [periodView addSubview:startLabel]; //ads the start time label to the period view
             }
-            UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"periodBackground"]];
+            /*UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"periodBackground"]];
             backgroundImageView.contentMode = UIViewContentModeScaleToFill;
             [periodView addSubview:backgroundImageView];
             [periodView sendSubviewToBack:backgroundImageView];
-            [backgroundImageView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, totalTimeDifference * PIXEL_MINUTE_RATIO)];
+            [backgroundImageView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, totalTimeDifference * PIXEL_MINUTE_RATIO)]; */
+            
+            UIGraphicsBeginImageContext(periodView.frame.size);
+            [[UIImage imageNamed:@"periodBackground"] drawInRect:periodView.bounds];
+            UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            periodView.backgroundColor = [UIColor colorWithPatternImage:image];
             
             UILabel *periodLabel = [[UILabel alloc] initWithFrame:(CGRectMake(80, 10, 210, 20))];
             [periodLabel setTextAlignment:NSTextAlignmentRight];
@@ -258,8 +265,8 @@
 
 -(void)addEvents {
     //totalSize = 64;
-    static float const PIXEL_MINUTE_RATIO = 2.3; //Ratio of minutes of an event to pixels it takes adjusting changes width of events
-    int const SCREEN_WIDTH = self.frame.size.width; //Constant for the width of the screen becuase I don't want to type it 132 times
+    float PIXEL_MINUTE_RATIO = 2.3; //Ratio of minutes of an event to pixels it takes adjusting changes width of events
+    int SCREEN_WIDTH = 320; //Constant for the width of the screen becuase I don't want to type it 132 times NEED TO CHANGE THIS BECAUSE IT WAS 0 FOR SOME REASON
     UIView *eventView;
     UILabel *startLabel;
     UILabel *endLabel;
@@ -358,20 +365,31 @@
                
                 [eventView addSubview:startLabel]; //ads the start time label to the event view
             }
-            UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"periodBackground"]];
+            /* UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"periodBackground"]];
             backgroundImageView.contentMode = UIViewContentModeScaleToFill;
             [eventView addSubview:backgroundImageView];
             [eventView sendSubviewToBack:backgroundImageView];
-            [backgroundImageView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, totalTimeDifference * PIXEL_MINUTE_RATIO)];
+            [backgroundImageView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, totalTimeDifference * PIXEL_MINUTE_RATIO)]; */
+            
+            /*UIGraphicsBeginImageContext(eventView.frame.size);
+            [[UIImage imageNamed:@"periodBackground"] drawInRect:eventView.bounds];
+            UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();*/
+            
             
             UILabel *eventLabel = [[UILabel alloc] initWithFrame:(CGRectMake(80, 10, 210, 20))];
             [eventLabel setTextAlignment:NSTextAlignmentRight];
             [eventLabel setText:event.title];
-            eventView.alpha = .75;
+            eventView.alpha = .65;
             
+            [eventView setBackgroundColor:[UIColor cyanColor]];
+  
             
+             
             [eventView addSubview:eventLabel];
+           
             [self addSubview:eventView]; //adds the event view to the view
+            
             
             totalSize = currentY;
             

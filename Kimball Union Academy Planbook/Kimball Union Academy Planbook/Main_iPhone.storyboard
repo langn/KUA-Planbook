@@ -33,7 +33,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ILE-24-VVb">
-                                        <rect key="frame" x="46" y="101" width="228" height="50"/>
+                                        <rect key="frame" x="46" y="138" width="228" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="View Today" backgroundImage="Button">
@@ -44,19 +44,8 @@
                                             <segue destination="j3m-kB-9cW" kind="push" id="5Lr-Tg-wJt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZCz-OC-V4X">
-                                        <rect key="frame" x="46" y="192" width="228" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Overview" backgroundImage="Button">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="hdO-Ur-Sjx" kind="push" id="W8u-sr-2sD"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="now-kY-IYc">
-                                        <rect key="frame" x="46" y="287" width="228" height="50"/>
+                                        <rect key="frame" x="46" y="227" width="228" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Notifications" backgroundImage="Button">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Cj-8y-GKi">
-                                        <rect key="frame" x="46" y="383" width="228" height="50"/>
+                                        <rect key="frame" x="46" y="321" width="228" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Sign In" backgroundImage="Button">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,7 +67,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NiU-JI-8AE">
-                                        <rect key="frame" x="46" y="480" width="228" height="50"/>
+                                        <rect key="frame" x="46" y="413" width="228" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Settings" backgroundImage="Button">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -97,7 +86,6 @@
                     <navigationItem key="navigationItem" title="Home" id="aou-eU-Iez"/>
                     <connections>
                         <outlet property="notificationsButton" destination="now-kY-IYc" id="Hqv-XV-lbN"/>
-                        <outlet property="overviewButton" destination="ZCz-OC-V4X" id="Dqe-a2-cNL"/>
                         <outlet property="settingsButton" destination="NiU-JI-8AE" id="SMv-2V-YF7"/>
                         <outlet property="signInButton" destination="5Cj-8y-GKi" id="oae-cg-Cqa"/>
                         <outlet property="skView" destination="ifo-Jk-gVU" id="5Hd-r8-4j2"/>
